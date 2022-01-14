@@ -3,14 +3,14 @@
 @import '_reset.scss';
 @import '_mixins.scss';
 
-// body {
-//   background: $primary-background;
-// }
-
-.hero {
-	background-image: url('./images/background-image.jpeg');
-	background-size: cover;
-	background-repeat: no-repeat;
-	padding: 5% 0 0 0;
-	width: 100vw;
+body {
+  background: $primary-background;
 }
+
+// .hero {
+// 	background-image: url('../images/background-image.jpeg');
+// 	background-size: cover;
+// 	background-repeat: no-repeat;
+// 	padding: 5% 0 0 0;
+// 	width: 100vw;
+// }
