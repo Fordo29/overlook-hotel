@@ -51,10 +51,10 @@ describe('User Class Testing', function() {
     expect(user1.availableRooms.length).to.equal(5);
     });
 
-    it('should return true', function() {
+    it('should return available rooms by room type', function() {
         user1.checkForAvailableRooms("2022/01/24", bookings, rooms)
-        user1.filterByRoomType()
-    expect(true).to.equal(false);
+        user1.filterByRoomType('residential suite')
+    expect(user1.filteredRooms.length).to.equal(2);
     });
     
     it.skip('should return true', function() {
