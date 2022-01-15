@@ -39,7 +39,7 @@ class User {
                     this.availableRooms.push(room)
                 }})
         })
-        return availableRooms
+        return this.availableRooms
     }
     
     filterByRoomType(roomType) {
