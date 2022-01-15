@@ -5,10 +5,12 @@ import './css/base.scss';
 
 import {fetchUsersData, fetchRoomsData, fetchBookingsData, postBooking} from './apiCalls';
 import User from './classes/user';
-// import domUpdates from './domUpdates';
+
 import {
     welcomeUser,
     displayBookings,
+    selectDate,
+    selectDateBtn,
     bookingCards
 } from './domUpdates';
 import './images/background-image2.jpg';
@@ -20,11 +22,14 @@ let bookingsData;
 let currentUser;
 let currentUserName;
 let currentUserId;
+let checkInDate;
 
 
 //~~~~~~~~~~~~~~~~~~~ Event Listeners ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 window.addEventListener('load', loadPage);
-
+selectDateBtn.addEventListener('click', function(e) {
+    selectDates(e)
+});
 
 
 
@@ -54,6 +59,11 @@ function getUser() {
   return currentUser;
 }
 
+function selectDates(event) {
+    event.preventDefault()
+    checkInDate = selectDate.value
+    console.log(checkInDate)
+}
 
 // ~~~~~~~~~~~~~~~~~~~~~~~ helper functions ~~~~~~~~~~~~~~~~~~~~~~~~~~
 function getRandomIndex(array) {
@@ -61,3 +71,4 @@ function getRandomIndex(array) {
 }
 
 export {currentUser};
+
