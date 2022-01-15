@@ -3,14 +3,52 @@
 @import '_reset.scss';
 @import '_mixins.scss';
 
-body {
-  background: $primary-background;
+
+* {
+	// font-family: $bodyFont;
+	// color: $offWhite;
 }
 
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+	height: 100vh;
+	// background-color: $goldenTan;
+	line-height: 1.2;
+}
+
+header {
+display: flex;
+justify-content: space-between;
+padding: 20px;
+background-color: #72343480;
+align-items: center;
+}
+
+.navBtn {
+  background-color: #364145;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+
+// body {
+//   background: $primary-background;
+// }
+
 .hero {
-	background-image: url('../images/background-image.png');
-	background-size: cover;
+	background-image: url('../images/background-image2.jpg');
 	background-repeat: no-repeat;
-	padding: 5% 0 0 0;
-	width: 100vw;
+	background-size: cover;
+	// padding: 5% 0 0 0;
+	// width: 100vw;
+  // height: 80vh;
+  height: 100vh;
+}
+
+.user-message {
+  padding: 25px;
 }

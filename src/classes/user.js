@@ -1,10 +1,9 @@
-
-
 class User {
     constructor (user, bookingData) {
         this.id = user.id;
         this.name = user.name;
         this.bookings = [];
+        // this.totalAmountSpent =  
     }
 
     getUsersBookings(bookingData) {
@@ -21,15 +20,19 @@ class User {
 
     totalSpentByUser(bookingData, roomData) {
         this.getUsersBookings(bookingData);
-        const totalAmount = this.bookings.reduce((acc, booking) => {
+        let totalAmount = this.bookings.reduce((acc, booking) => {
             roomData.forEach(room => {
                 if (room.number === booking.roomNumber) {
                     acc += room.costPerNight
                 }
             })
+           console.log(acc)
         return acc
         }, 0)
-        return totalAmount
+
+      
+        
+        return Math.round(totalAmount*100)/100
     }
 
 
