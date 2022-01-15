@@ -8,6 +8,8 @@ import User from './classes/user';
 // import domUpdates from './domUpdates';
 import {
     welcomeUser,
+    displayBookings,
+    bookingCards
 } from './domUpdates';
 import './images/background-image2.jpg';
 
@@ -39,6 +41,7 @@ function loadPage() {
     bookingsData = data[2].bookings
     getUser();
     welcomeUser(bookingsData, roomsData);
+    displayBookings(bookingsData)
   });
 }
 

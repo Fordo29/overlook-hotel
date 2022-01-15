@@ -35,6 +35,15 @@ align-items: center;
   border-radius: 5px;
 }
 
+.booking-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 2em;
+  grid-template-columns: 25% 25% 25% 25%;
+	padding: 5% 10%;
+}
+
 // body {
 //   background: $primary-background;
 // }
