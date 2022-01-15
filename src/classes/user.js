@@ -3,7 +3,8 @@ class User {
         this.id = user.id;
         this.name = user.name;
         this.bookings = [];
-        this.availableRooms = [] 
+        this.availableRooms = []; 
+        this.filteredRooms
     }
 
     getUsersBookings(bookingData) {
@@ -33,7 +34,7 @@ class User {
 
     checkForAvailableRooms(date, bookingData, roomData) {
         const bookedRooms = bookingData.filter(booking => booking.date === date)
-        const availableRooms = bookedRooms.forEach(bookedRoom => {
+        bookedRooms.forEach(bookedRoom => {
             roomData.forEach(room => {
                 if(room.number !== bookedRoom.roomNumber) {
                     this.availableRooms.push(room)
@@ -43,8 +44,10 @@ class User {
     }
     
     filterByRoomType(roomType) {
-        this.availableRooms.filter(availableRoom => availableRoom.roomType === roomType)
+        this.filteredRooms = this.availableRooms.filter(availableRoom => availableRoom.roomType === roomType)
+        return this.filteredRooms
     }
+
 }
 
 export default User;
