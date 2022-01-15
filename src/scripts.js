@@ -9,6 +9,7 @@ import User from './classes/user';
 import {
     welcomeUser,
     displayBookings,
+    bookingCards
 } from './domUpdates';
 import './images/background-image2.jpg';
 
