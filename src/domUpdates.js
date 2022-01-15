@@ -1,6 +1,6 @@
 import {currentUser} from './scripts';
 
-// let userGreeting = document.getElementById('usermessage');
+let bookingCards= document.getElementById('bookingSection');
 
 
 //~~~~~~~~~~~~~~~~~helper functions ~~~~~~~~~~~~~~~
@@ -23,5 +23,22 @@ function welcomeUser(bookingData, roomData) {
       <br>$${currentUser.totalSpentByUser(bookingData, roomData)}</h3>`;
 }
 
-export {welcomeUser}
+function displayBookings(bookingsArr) {
+    bookingCards.innerHTML = ``;
+    currentUser.getUsersBookings(bookingsArr)
+    console.log(currentUser.bookings)
+    currentUser.bookings.forEach(booking => {
+        return bookingCards.innerHTML +=
+        `<article class="card" id="${booking.id}" tabindex="0">
+       <h3>${booking.date}</h3>
+        <h3>${booking.roomNumber}</h3>
+        </article>`
+    });
+
+}
+
+export {
+    welcomeUser,
+    displayBookings
+}
 // export default  domUpdates;
