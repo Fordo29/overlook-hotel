@@ -30,8 +30,9 @@ function displayBookings(bookingsArr) {
     currentUser.bookings.forEach(booking => {
         return bookingCards.innerHTML +=
         `<article class="card" id="${booking.id}" tabindex="0">
-       <h3>${booking.date}</h3>
-        <h3>${booking.roomNumber}</h3>
+       <h3>Date Booked: ${booking.date}</h3>
+        <h3>Room Number: ${booking.roomNumber}</h3>
+        <h3>Booking Confirmation: ${booking.id}</h3>
         </article>`
     });
 
@@ -39,6 +40,7 @@ function displayBookings(bookingsArr) {
 
 export {
     welcomeUser,
-    displayBookings
+    displayBookings, 
+    bookingCards
 }
 // export default  domUpdates;
