@@ -1,7 +1,7 @@
 import chai from 'chai';
 const expect = chai.expect;
 import Booking from '../src/classes/booking';
-import {bookings} from './testData';
+import {bookings, rooms} from './testData';
 
 
 describe('Booking Class Testing', function() {

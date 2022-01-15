@@ -3,7 +3,7 @@ class User {
         this.id = user.id;
         this.name = user.name;
         this.bookings = [];
-        // this.totalAmountSpent =  
+        this.availableRooms = [] 
     }
 
     getUsersBookings(bookingData) {
@@ -26,17 +26,25 @@ class User {
                     acc += room.costPerNight
                 }
             })
-           console.log(acc)
         return acc
         }, 0)
-
-      
-        
         return Math.round(totalAmount*100)/100
     }
 
-
-
+    checkForAvailableRooms(date, bookingData, roomData) {
+        const bookedRooms = bookingData.filter(booking => booking.date === date)
+        const availableRooms = bookedRooms.forEach(bookedRoom => {
+            roomData.forEach(room => {
+                if(room.number !== bookedRoom.roomNumber) {
+                    this.availableRooms.push(room)
+                }})
+        })
+        return this.availableRooms
+    }
+    
+    filterByRoomType(roomType) {
+        this.availableRooms.filter(availableRoom => availableRoom.roomType === roomType)
+    }
 }
 
 export default User;

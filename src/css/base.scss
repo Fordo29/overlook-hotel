@@ -35,7 +35,8 @@ align-items: center;
   border-radius: 5px;
 }
 
-.booking-cards {
+.booking-cards, 
+.available-bookings {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
@@ -60,4 +61,17 @@ align-items: center;
 
 .user-message {
   padding: 25px;
+}
+label {
+    display: block;
+    font: 1rem 'Fira Sans', sans-serif;
+}
+
+input,
+label {
+    margin: .4rem 0;
+}
+
+.hidden {
+  display: none;
 }
