@@ -5,9 +5,13 @@ import './css/base.scss';
 
 import {fetchUsersData, fetchRoomsData, fetchBookingsData, postBooking} from './apiCalls';
 import User from './classes/user';
-import domUpdates from './domUpdates';
+// import domUpdates from './domUpdates';
+import {
+    welcomeUser,
+} from './domUpdates';
+import './images/background-image2.jpg';
 
-import './images/background-image.png';
+
 let usersData;
 let roomsData;
 let bookingsData;
@@ -15,9 +19,12 @@ let currentUser;
 let currentUserName;
 let currentUserId;
 
-console.log('This is the JavaScript entry file - your code begins here.');
 
+//~~~~~~~~~~~~~~~~~~~ Event Listeners ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 window.addEventListener('load', loadPage);
+
+
+
 
 
 function fetchAllData() {
@@ -31,6 +38,7 @@ function loadPage() {
     roomsData = data[1].rooms
     bookingsData = data[2].bookings
     getUser();
+    welcomeUser(bookingsData, roomsData);
   });
 }
 
@@ -43,6 +51,10 @@ function getUser() {
   return currentUser;
 }
 
+
+// ~~~~~~~~~~~~~~~~~~~~~~~ helper functions ~~~~~~~~~~~~~~~~~~~~~~~~~~
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
+
+export {currentUser};
