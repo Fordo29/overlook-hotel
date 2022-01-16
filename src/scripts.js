@@ -9,6 +9,7 @@ import User from './classes/user';
 import {
     welcomeUser,
     displayBookings,
+    displayAvailableBookings,
     selectDate,
     selectDateBtn,
     bookingCards
@@ -28,7 +29,7 @@ let checkInDate;
 //~~~~~~~~~~~~~~~~~~~ Event Listeners ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 window.addEventListener('load', loadPage);
 selectDateBtn.addEventListener('click', function(e) {
-    selectDates(e)
+    selectDates(e, bookingsData, roomsData)
 });
 
 
@@ -59,10 +60,12 @@ function getUser() {
   return currentUser;
 }
 
-function selectDates(event) {
+function selectDates(event, bookingsData, roomsData) {
     event.preventDefault()
-    checkInDate = selectDate.value
-    console.log(checkInDate)
+    checkInDate = selectDate.value.split("-").join("/")
+    console.log("checkinDate",checkInDate)
+    
+    displayAvailableBookings(checkInDate, bookingsData, roomsData);
 }
 
 // ~~~~~~~~~~~~~~~~~~~~~~~ helper functions ~~~~~~~~~~~~~~~~~~~~~~~~~~

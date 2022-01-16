@@ -40,6 +40,7 @@ class User {
                     this.availableRooms.push(room)
                 }})
         })
+        console.log("available rooms", this.availableRooms)
         return this.availableRooms
     }
     
