@@ -1,3 +1,5 @@
+import {errorHanding, errorHanding1} from './scripts'
+
 function fetchUsersData() {
  return fetch("http://localhost:3001/api/v1/customers")
  .then(response => response.json())
@@ -24,9 +26,11 @@ function fetchRoomsData() {
             'Content-Type': 'application/json'
         }
         })
-        .then(response => response.json())
+        .then(response => errorHanding1(response))
         .then(data => console.log(data))
-        .catch(err => console.log(err));
+        .catch(err => errorHanding(err));
 }
+
+
 
  export {fetchUsersData, fetchRoomsData, fetchBookingsData, postBooking};
