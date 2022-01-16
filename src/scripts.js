@@ -10,8 +10,11 @@ import {
     welcomeUser,
     displayBookings,
     displayAvailableBookings,
+    displayFilterRooms,
     selectDate,
     selectDateBtn,
+    selectFilteredRooms,
+    grabRoomTypeBtn,
     bookingCards
 } from './domUpdates';
 import './images/background-image2.jpg';
@@ -24,6 +27,7 @@ let currentUser;
 let currentUserName;
 let currentUserId;
 let checkInDate;
+let roomType;
 
 
 //~~~~~~~~~~~~~~~~~~~ Event Listeners ~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -31,9 +35,7 @@ window.addEventListener('load', loadPage);
 selectDateBtn.addEventListener('click', function(e) {
     selectDates(e, bookingsData, roomsData)
 });
-
-
-
+grabRoomTypeBtn.addEventListener('click', filteredRooms)
 
 function fetchAllData() {
   const response = Promise.all([fetchUsersData(), fetchRoomsData(), fetchBookingsData()])
@@ -69,7 +71,14 @@ function selectDates(event, bookingsData, roomsData) {
     displayAvailableBookings(checkInDate, bookingsData, roomsData);
 }
 
-// ~~~~~~~~~~~~~~~~~~~~~~~ helper functions ~~~~~~~~~~~~~~~~~~~~~~~~~~
+function filteredRooms() {
+    roomType = selectFilteredRooms.value
+    console.log(roomType)
+    console.log(currentUser.availableRooms)
+    displayFilterRooms(roomType)
+}
+
+// ~~~~~~~~~~~~~~~~ helper functions ~~~~~~~~~~~~~~~~~~~~
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
