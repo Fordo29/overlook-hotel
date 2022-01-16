@@ -4,7 +4,7 @@ class User {
         this.name = user.name;
         this.bookings = [];
         this.availableRooms = []; 
-        this.filteredRooms
+        this.filteredRooms = []
     }
 
     getUsersBookings(bookingData) {
@@ -46,8 +46,10 @@ class User {
     }
     
     filterByRoomType(roomType) {
-        this.filteredRooms = this.availableRooms.filter(availableRoom => availableRoom.roomType === roomType)
-        return this.filteredRooms
+        this.filteredRooms = this.availableRooms.filter(availableRoom => {
+            return availableRoom.roomType === roomType
+        })
+        
     }
 
 }
