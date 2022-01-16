@@ -27,15 +27,16 @@
           <input type="submit" id="checkInButton" value="Check In!">
         </form>
       </article>
-      <article class="roomFilterDropDown hidden">
-        <label for="rooms">Choose a room type:</label>
+      <article class="roomFilterDropDown">
+        <label for="rooms">Filter Rooms By Room Type:</label>
         
-        <select name="rooms" id="room">
-          <option value="volvo">Volvo</option>
-          <option value="saab">Saab</option>
-          <option value="mercedes">Mercedes</option>
-          <option value="audi">Audi</option>
+        <select name="rooms" id="rooms">
+          <option value="junior suite">Junior Suite</option>
+          <option value="residential suite">Residential Suite</option>
+          <option value="suite">Suite</option>
+          <option value="single room">Single Room</option>
         </select>
+        <button id="grabRoomType">Click to Select Room Type</button>
       </article>
       <h2>All bookings</h2>
       <article class="booking-cards hidden" id="bookingSection" tabindex="0">
