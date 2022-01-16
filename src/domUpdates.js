@@ -4,6 +4,8 @@ let bookingCards = document.getElementById('bookingSection');
 let selectDateBtn = document.getElementById('checkInButton');
 let selectDate = document.getElementById('checkInCalendar');
 let allAvailableRooms = document.getElementById('availableBookings');
+let selectFilteredRooms = document.getElementById('rooms');
+let grabRoomTypeBtn = document.getElementById('grabRoomType');
 
 
 //~~~~~~~~~~~~~~~~~helper functions ~~~~~~~~~~~~~~~
@@ -55,13 +57,37 @@ function displayAvailableBookings(date, bookingData, roomData) {
     })
 }
 
+function displayFilterRooms(roomType) {
+    allAvailableRooms.innerHTML = ``;
+    currentUser.filterByRoomType(roomType);
+    if(currentUser.filteredRooms.length > 0) {
+        currentUser.filteredRooms.forEach(room => {
+            return allAvailableRooms.innerHTML += 
+            `<article class="card" id="${room.number}" tabindex="0">
+            <h3>Room Type: ${room.roomType}</h3>
+            <h3>Bed Size: ${room.bedSize}</h3>
+            <h3>Number of Beds: ${room.numBeds}</h3>
+            <h3>Cost per Night: ${room.costPerNight}</h3>
+            </article>`  
+        })
+    } else {
+        return allAvailableRooms.innerHTML = 
+        `We fiercely apologize!  All rooms are booked.  Please make another selection`
+    }
+}
+
+
+
 
 
 export {
     welcomeUser,
     displayBookings,
     displayAvailableBookings,
+    displayFilterRooms,
     selectDate, 
     selectDateBtn,
+    selectFilteredRooms,
+    grabRoomTypeBtn,
     bookingCards
 }
