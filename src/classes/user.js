@@ -33,15 +33,16 @@ class User {
     }
 
     checkForAvailableRooms(date, bookingData, roomData) {
-        const bookedRooms = bookingData.filter(booking => booking.date === date)
-        bookedRooms.forEach(bookedRoom => {
-            roomData.forEach(room => {
-                if(room.number !== bookedRoom.roomNumber) {
-                    this.availableRooms.push(room)
-                }})
+        const bookedRoomNums = bookingData.reduce((acc, booking) => {
+            if(booking.date === date) {
+                acc.push(booking.roomNumber)
+            }
+        return acc    
+        }, [])
+        console.log(bookedRoomNums)
+        this.availableRooms = roomData.filter(room => {
+            return !bookedRoomNums.includes(room.number)
         })
-        console.log("available rooms", this.availableRooms)
-        return this.availableRooms
     }
     
     filterByRoomType(roomType) {
