@@ -1,8 +1,9 @@
 import {currentUser} from './scripts';
 
-let bookingCards= document.getElementById('bookingSection');
+let bookingCards = document.getElementById('bookingSection');
 let selectDateBtn = document.getElementById('checkInButton');
 let selectDate = document.getElementById('checkInCalendar');
+let allAvailableRooms = document.getElementById('availableBookings');
 
 
 //~~~~~~~~~~~~~~~~~helper functions ~~~~~~~~~~~~~~~
@@ -39,9 +40,27 @@ function displayBookings(bookingsArr) {
 
 }
 
+function displayAvailableBookings(date, bookingData, roomData) {
+    allAvailableRooms.innerHTML = ``;
+    currentUser.checkForAvailableRooms(date, bookingData, roomData);
+    console.log(currentUser.availableRooms)
+    currentUser.availableRooms.forEach(room => {
+        return allAvailableRooms.innerHTML += 
+        `<article class="card" id="${room.number}" tabindex="0">
+        <h3>Room Type: ${room.roomType}</h3>
+        <h3>Bed Size: ${room.bedSize}</h3>
+        <h3>Number of Beds: ${room.numBeds}</h3>
+        <h3>Cost per Night: ${room.costPerNight}</h3>
+        </article>`
+    })
+}
+
+
+
 export {
     welcomeUser,
     displayBookings,
+    displayAvailableBookings,
     selectDate, 
     selectDateBtn,
     bookingCards
