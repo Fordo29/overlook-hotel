@@ -62,8 +62,9 @@ function getUser() {
 
 function selectDates(event, bookingsData, roomsData) {
     event.preventDefault()
+    console.log("selected value before", selectDate.value)
     checkInDate = selectDate.value.split("-").join("/")
-    console.log("checkinDate",checkInDate)
+    console.log("selected value after", checkInDate)
     
     displayAvailableBookings(checkInDate, bookingsData, roomsData);
 }
