@@ -15,9 +15,11 @@ import {
     selectDateBtn,
     selectFilteredRooms,
     grabRoomTypeBtn,
+    errorHandingLine,
+    bookingBtns,
     bookingCards
 } from './domUpdates';
-import './images/background-image2.jpg';
+import './images/background-image2.png';
 
 
 let usersData;
@@ -35,7 +37,18 @@ window.addEventListener('load', loadPage);
 selectDateBtn.addEventListener('click', function(e) {
     selectDates(e, bookingsData, roomsData)
 });
-grabRoomTypeBtn.addEventListener('click', filteredRooms)
+
+grabRoomTypeBtn.addEventListener('click', filteredRooms);
+
+
+function updateBookingButtons(bookingBtns) {
+  bookingBtns.forEach((button) => {
+    button.addEventListener('click', function (e) {
+      bookARoom(e);
+    });
+  });
+}
+
 
 function fetchAllData() {
   const response = Promise.all([fetchUsersData(), fetchRoomsData(), fetchBookingsData()])
@@ -78,10 +91,42 @@ function filteredRooms() {
     displayFilterRooms(roomType)
 }
 
+function bookARoom(e) {
+   if(e.target.classList.contains('bookingBtn')) {
+    console.log("hello lets get to posting")
+    const postThisBooking = { 
+        userID: currentUser.id, 
+        date: checkInDate, 
+        roomNumber: parseInt(e.target.parentNode.id)
+    }
+    console.log(postThisBooking)
+    postBooking(postThisBooking)
+
+   }
+
+}
+
+
+function errorHanding1(response) {
+    if(!response.ok) {
+        return errorHandingLine.innerText = `You would love to have you stay with us. Please try again.`  
+    } else {
+       return response.json()
+    }
+}
+
+function errorHanding(error) {
+    if(error.message = '422 (Unprocessable Entity)') {
+        errorHandingLine.innerText = `You would love to have you stay with us. Please try again.` 
+    } else {
+        console.log(error)
+    }
+}
+
 // ~~~~~~~~~~~~~~~~ helper functions ~~~~~~~~~~~~~~~~~~~~
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
-export {currentUser};
+export {currentUser, updateBookingButtons, errorHanding, errorHanding1};
 
