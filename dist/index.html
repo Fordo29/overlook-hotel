@@ -17,18 +17,22 @@
   </header>
   <main>
     <section class="hero">
+      <article class="login-screen hidden" id="loginSection">
+        
+      </article>
       <p class="user-message" id="userMessage">
         <!-- where our user greeting displays -->
       </p>
-      <p id='errorHandingLine'></p>
-      <article class="calendar">
+      <button class='navBtn' id="clickForRooms" >Book A Room</button>
+      <p class="error-handling" id='errorHandingLine'></p>
+      <article class="calendar" id="calendarView">
         <form>
           <label for="checkInCalendar">Pick a check in date:</label>
-          <input type="date" id="checkInCalendar" name="checkin" value="2022-01-15" min="2022-01-15" max="2022-12-31" required>
+          <input type="date" id="checkInCalendar" name="checkin" value="2022-01-15" min="2022-01-19" max="2022-12-31" required>
           <input type="submit" id="checkInButton" value="Check In!">
         </form>
       </article>
-      <article class="roomFilterDropDown">
+      <article class="roomFilterDropDown" id="roomFilterDropDown">
         <label for="rooms">Filter Rooms By Room Type:</label>
         
         <select name="rooms" id="rooms">
@@ -41,12 +45,12 @@
       </article>
     </section>
     <section>
-      <h2 class="all-bookings">Your bookings</h2>
+      <h2 class="all-bookings" id="allBookingsTitle">Your bookings</h2>
       <article class="booking-cards" id="bookingSection" tabindex="0">
           <!-- display all user bookings cards -->
       </article>
-      <h2 class="all-bookings">All Available Bookings</h2>
-      <article class="available-bookings" id="availableBookings">
+      <h2 class="all-available-title" id="availableTitle">All Available Bookings</h2>
+      <article class="available-bookings" id="availableToBookSection">
         <!-- display all available rooms -->
       </article>
     </section>    
