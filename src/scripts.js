@@ -12,6 +12,10 @@ import {
     displayAvailableBookings,
     displayFilterRooms,
     successfulNewBooking,
+    showHomepage,
+    showAvailableRooms,
+    showLoginPage,
+    clickForRooms,
     selectDate,
     selectDateBtn,
     selectFilteredRooms,
@@ -40,6 +44,7 @@ selectDateBtn.addEventListener('click', function(e) {
 });
 
 grabRoomTypeBtn.addEventListener('click', filteredRooms);
+clickForRooms.addEventListener('click', showAvailableRooms)
 
 
 function updateBookingButtons(bookingBtns) {
@@ -61,8 +66,9 @@ function loadPage() {
     roomsData = data[1].rooms
     bookingsData = data[2].bookings
     getUser();
+    showHomepage();
     welcomeUser(bookingsData, roomsData);
-    displayBookings(bookingsData, roomsData)
+    displayBookings(bookingsData, roomsData);
   });
 }
 
@@ -98,7 +104,7 @@ function bookARoom(e) {
     postBooking(postThisBooking).then(data => {
     fetchBookingsData().then(data => {
         bookingsData = data.bookings
-        displayBookings(bookingsData)
+        displayBookings(bookingsData, roomsData)
         successfulNewBooking()
         // displayAvailableBookings(checkInDate, bookingsData, roomsData);
     })

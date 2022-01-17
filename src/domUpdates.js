@@ -7,19 +7,41 @@ let allAvailableRooms = document.getElementById('availableBookings');
 let selectFilteredRooms = document.getElementById('rooms');
 let grabRoomTypeBtn = document.getElementById('grabRoomType');
 let errorHandingLine = document.getElementById('errorHandingLine');
+let userMessage = document.getElementById('userMessage');
+let allBookingsTitle = document.getElementById('allBookingsTitle');
+let bookingSection = document.getElementById('bookingSection');
+let availableTitle = document.getElementById('availableTitle');
+let availableToBookSection = document.getElementById('availableToBookSection');
+let loginSection = document.getElementById('loginSection');
+let calendarView = document.getElementById('calendarView');
+let roomFilterDropDown = document.getElementById('roomFilterDropDown');
+let clickForRooms = document.getElementById('clickForRooms');
 let bookingBtns = [];
 
 
 //~~~~~~~~~~~~~~~~~helper functions ~~~~~~~~~~~~~~~
-const show = (elements) => {
+function show(elements) {
   elements.forEach(element => element.classList.remove('hidden'));
 }
 
-const hide = (elements) => {
+function hide(elements) {
   elements.forEach(element => element.classList.add('hidden'));
 }
 
+function showLoginPage() {
+show([loginSection]);
+hide([calendarView, roomFilterDropDown, allBookingsTitle, bookingSection, availableTitle, availableToBookSection, userMessage, clickForRooms]);
+}
 
+function showHomepage() {
+show([userMessage, allBookingsTitle, bookingSection, clickForRooms]);
+hide([calendarView, roomFilterDropDown, allBookingsTitle, availableTitle, availableToBookSection, loginSection]);
+}
+
+function showAvailableRooms() {
+show([calendarView, availableTitle, availableToBookSection, bookingSection, userMessage]);
+hide([loginSection, allBookingsTitle, bookingSection, clickForRooms]);
+}
 
 //~~~~~~~~~~~~~~~~~ HOME PAGE FUNCTIONS ~~~~~~~~~~~~~~~~/
 function welcomeUser(bookingData, roomData) {
@@ -50,12 +72,12 @@ function displayBookings(bookingsArr, roomData) {
 }
 
 function displayAvailableBookings(date, bookingData, roomData) {
-    allAvailableRooms.innerHTML = ``;
+    availableToBookSection.innerHTML = ``;
     currentUser.checkForAvailableRooms(date, bookingData, roomData);
     console.log(currentUser.availableRooms)
     if(currentUser.availableRooms.length > 0) {
     currentUser.availableRooms.forEach(room => {
-        return allAvailableRooms.innerHTML += 
+        return availableToBookSection.innerHTML += 
         `<article class="card" id="${room.number}" tabindex="0">
             <h3>Room Type: ${room.roomType}</h3>
             <h3>Bed Size: ${room.bedSize}</h3>
@@ -65,19 +87,20 @@ function displayAvailableBookings(date, bookingData, roomData) {
         </article>`
     })
     } else {
-        return allAvailableRooms.innerHTML = 
+        return availableToBookSection.innerHTML = 
         `We fiercely apologize!  All rooms are booked for the date selected.  Please make another selection`
     }
+    show([roomFilterDropDown])
     bookingBtns = document.querySelectorAll('.bookingBtn');
     updateBookingButtons(bookingBtns);
 }
 
 function displayFilterRooms(roomType) {
-    allAvailableRooms.innerHTML = ``;
+    availableToBookSection.innerHTML = ``;
     currentUser.filterByRoomType(roomType);
     if(currentUser.filteredRooms.length > 0) {
         currentUser.filteredRooms.forEach(room => {
-            return allAvailableRooms.innerHTML += 
+            return availableToBookSection.innerHTML += 
             `<article class="card" id="${room.number}" tabindex="0">
             <h3>Room Type: ${room.roomType}</h3>
             <h3>Bed Size: ${room.bedSize}</h3>
@@ -87,7 +110,7 @@ function displayFilterRooms(roomType) {
             </article>`  
         })
     } else {
-        return allAvailableRooms.innerHTML = 
+        return availableToBookSection.innerHTML = 
         `We fiercely apologize!  The room type you selected are booked.  Please make another selection`
     }
     bookingBtns = document.querySelectorAll('.bookingBtn');
@@ -95,8 +118,8 @@ function displayFilterRooms(roomType) {
 }
 
 function successfulNewBooking () {
-    allAvailableRooms.innerHTML = ``;
-    allAvailableRooms.innerHTML = `<p>Thank you for booking with us!  We are excited to see you soon!</p>`
+    availableToBookSection.innerHTML = ``;
+    availableToBookSection.innerHTML = `<p>Thank you for booking with us!  We are excited to see you soon!</p>`
 
 }
 
@@ -107,6 +130,10 @@ export {
     displayAvailableBookings,
     displayFilterRooms,
     successfulNewBooking,
+    showHomepage,
+    showAvailableRooms,
+    showLoginPage,
+    clickForRooms,
     selectDate, 
     selectDateBtn,
     selectFilteredRooms,
