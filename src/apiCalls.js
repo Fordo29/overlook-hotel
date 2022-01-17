@@ -34,7 +34,6 @@ function fetchRoomsData() {
         }
         })
         .then(response => errorHanding1(response))
-
         .catch(err => {
             errorHandingLine.innerText = `You would love to have you stay with us. Please try again.` 
         } );
