@@ -33,15 +33,16 @@ function welcomeUser(bookingData, roomData) {
 function displayBookings(bookingsArr, roomData) {
     bookingCards.innerHTML = ``;
     currentUser.getUsersBookings(bookingsArr)
-    currentUser.bookings.forEach(booking => {
-        // const foundRoom = roomData.find(room => {
-        //     return room.number === booking.roomNumber
-        // })
+    let sortedBookings = currentUser.bookings.sort((a, b) => new Date(a.date) - new Date(b.date))
+    sortedBookings.forEach(booking => {
+        const foundRoom = roomData.find(room => {
+            return room.number === booking.roomNumber
+        })
         return bookingCards.innerHTML +=
         `<article class="card" tabindex="0">
         <h3>Date Booked: ${booking.date}</h3>
-        <h3>Room Type: </h3>
-        <h3>Cost Per Night: </h3>
+        <h3>Room Type: ${foundRoom.roomType}</h3>
+        <h3>Cost Per Night: $${foundRoom.costPerNight}</h3>
         <h3>Booking Confirmation: ${booking.id}</h3>
         </article>`
     });
@@ -96,7 +97,7 @@ function displayFilterRooms(roomType) {
 function successfulNewBooking () {
     allAvailableRooms.innerHTML = ``;
     allAvailableRooms.innerHTML = `<p>Thank you for booking with us!  We are excited to see you soon!</p>`
-    
+
 }
 
 
