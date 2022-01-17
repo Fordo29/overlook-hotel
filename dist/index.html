@@ -17,8 +17,14 @@
   </header>
   <main>
     <section class="hero">
-      <article class="login-screen hidden" id="loginSection">
-        
+      <article class="login-screen" id="loginSection">
+        <form>
+          <label for="userName">UserName:</label><br>
+          <input type="text" id="userName" name="username" required><br>
+          <label for="password">Password:</label><br>
+          <input type="text" id="password" name="password" required><br><br>
+          <input type="submit" id="loginButton" value="Login">
+        </form>
       </article>
       <p class="user-message" id="userMessage">
         <!-- where our user greeting displays -->
