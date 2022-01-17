@@ -15,6 +15,9 @@ import {
     showHomepage,
     showAvailableRooms,
     showLoginPage,
+    loginName,
+    loginPassword,
+    loginButton,
     clickForRooms,
     selectDate,
     selectDateBtn,
@@ -31,8 +34,6 @@ let usersData;
 let roomsData;
 let bookingsData;
 let currentUser;
-let currentUserName;
-let currentUserId;
 let checkInDate;
 let roomType;
 
@@ -44,16 +45,62 @@ selectDateBtn.addEventListener('click', function(e) {
 });
 
 grabRoomTypeBtn.addEventListener('click', filteredRooms);
-clickForRooms.addEventListener('click', showAvailableRooms)
+clickForRooms.addEventListener('click', showAvailableRooms);
+
+loginButton.addEventListener('click', (e) => {
+    logIn(e)
+})
+
 
 
 function updateBookingButtons(bookingBtns) {
   bookingBtns.forEach((button) => {
-    button.addEventListener('click', function (e) {
+    button.addEventListener('click', function(e) {
       bookARoom(e);
     });
   });
 }
+
+function logIn(e) {
+    e.preventDefault();
+    let logNameCheck = loginName.value
+    let logPasswordCheck = loginPassword.value
+    console.log('1st grab of name', logNameCheck)
+    console.log('1st grab of password', logPasswordCheck)
+    let logNameCheck2 = parseInt(logNameCheck.substring(8))
+    // loginName.value = ''
+    // loginPassword.value = ''
+    customerLookUp(logNameCheck2, logPasswordCheck);
+
+}
+
+function customerLookUp(logNameCheck2, logPasswordCheck) {
+    if(logNameCheck2 > 0 && logNameCheck2 <= 50 && logPasswordCheck === 'overlook2021') {
+        fetchData(logNameCheck2).then(data => {
+            console.log(data)
+            usersData = data[0]
+            roomsData = data[1].rooms
+            bookingsData = data[2].bookings
+
+            console.log(usersData)
+            currentUser = new User(usersData);
+            console.log('after single fetch', currentUser)
+            showHomepage();
+            welcomeUser(bookingsData, roomsData);
+            displayBookings(bookingsData, roomsData);
+        })
+       
+    } else {
+        // error handling
+    } 
+    
+}
+
+function fetchData(logNameCheck2) {
+  const response = Promise.all([fetchSingleUser(logNameCheck2), fetchRoomsData(), fetchBookingsData()])
+  return response;
+}
+
 
 function fetchAllData() {
   const response = Promise.all([fetchUsersData(), fetchRoomsData(), fetchBookingsData()])
@@ -65,20 +112,18 @@ function loadPage() {
     usersData = data[0].customers
     roomsData = data[1].rooms
     bookingsData = data[2].bookings
-    getUser();
-    showHomepage();
-    welcomeUser(bookingsData, roomsData);
-    displayBookings(bookingsData, roomsData);
+    // getUser();
+    // showHomepage();
+    // welcomeUser(bookingsData, roomsData);
+    // displayBookings(bookingsData, roomsData);
+    showLoginPage()
   });
 }
 
 function getUser() {
   let userIndex = getRandomIndex(usersData);
-  currentUser = new User(usersData[userIndex]);
-  currentUserName = currentUser.name;
-  currentUserId = currentUser.id;
-  console.log(currentUser)
-  return currentUser;
+  
+
 }
 
 function selectDates(event, bookingsData, roomsData) {

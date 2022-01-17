@@ -17,7 +17,9 @@ let calendarView = document.getElementById('calendarView');
 let roomFilterDropDown = document.getElementById('roomFilterDropDown');
 let clickForRooms = document.getElementById('clickForRooms');
 let bookingBtns = [];
-
+let loginName = document.getElementById('userName');
+let loginPassword = document.getElementById('password');
+let loginButton = document.getElementById('loginButton');
 
 //~~~~~~~~~~~~~~~~~helper functions ~~~~~~~~~~~~~~~
 function show(elements) {
@@ -42,6 +44,10 @@ function showAvailableRooms() {
 show([calendarView, availableTitle, availableToBookSection, bookingSection, userMessage]);
 hide([loginSection, allBookingsTitle, bookingSection, clickForRooms]);
 }
+
+
+
+
 
 //~~~~~~~~~~~~~~~~~ HOME PAGE FUNCTIONS ~~~~~~~~~~~~~~~~/
 function welcomeUser(bookingData, roomData) {
@@ -133,6 +139,9 @@ export {
     showHomepage,
     showAvailableRooms,
     showLoginPage,
+    loginName,
+    loginPassword,
+    loginButton,
     clickForRooms,
     selectDate, 
     selectDateBtn,
