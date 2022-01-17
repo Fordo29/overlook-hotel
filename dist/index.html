@@ -24,7 +24,7 @@
       <article class="calendar">
         <form>
           <label for="checkInCalendar">Pick a check in date:</label>
-          <input type="date" id="checkInCalendar" name="checkin" value="2022-01-15" min="2022-01-15" max="2022-12-31">
+          <input type="date" id="checkInCalendar" name="checkin" value="2022-01-15" min="2022-01-15" max="2022-12-31" required>
           <input type="submit" id="checkInButton" value="Check In!">
         </form>
       </article>
@@ -41,8 +41,8 @@
       </article>
     </section>
     <section>
-      <h2 class="all-bookings hidden">Your bookings</h2>
-      <article class="booking-cards hidden" id="bookingSection" tabindex="0">
+      <h2 class="all-bookings">Your bookings</h2>
+      <article class="booking-cards" id="bookingSection" tabindex="0">
           <!-- display all user bookings cards -->
       </article>
       <h2 class="all-bookings">All Available Bookings</h2>
