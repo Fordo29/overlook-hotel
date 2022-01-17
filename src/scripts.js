@@ -50,7 +50,6 @@ function updateBookingButtons(bookingBtns) {
   });
 }
 
-
 function fetchAllData() {
   const response = Promise.all([fetchUsersData(), fetchRoomsData(), fetchBookingsData()])
   return response;
@@ -63,7 +62,7 @@ function loadPage() {
     bookingsData = data[2].bookings
     getUser();
     welcomeUser(bookingsData, roomsData);
-    displayBookings(bookingsData)
+    displayBookings(bookingsData, roomsData)
   });
 }
 
