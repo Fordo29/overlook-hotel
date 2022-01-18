@@ -39,7 +39,6 @@ class User {
             }
         return acc    
         }, [])
-        console.log(bookedRoomNums)
         this.availableRooms = roomData.filter(room => {
             return !bookedRoomNums.includes(room.number)
         })

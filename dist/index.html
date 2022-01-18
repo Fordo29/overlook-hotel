@@ -4,28 +4,36 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oxygen:wght@400;700&display=swap" rel="stylesheet">
   <title>Mandella Beach Resort</title>
 </head>
 <body>
   <header class="header">
     <a href="/"><h1>Mandella Beach Resort</h1></a>
-   <section class="navBar">
-    <button class='navBtn'>Log In</button>
-    <button class='navBtn'>Total Amount Spent</button>
+   <section class='navBar'>
+    <button class='navBtn hidden' id="logOutBtn">Log Out</button>
+    
 
    </section>
   </header>
   <main>
-    <section class="hero">
+    <section class="loginHere">
       <article class="login-screen" id="loginSection">
         <form>
-          <label for="userName">UserName:</label><br>
-          <input type="text" id="userName" name="username" required><br>
-          <label for="password">Password:</label><br>
-          <input type="text" id="password" name="password" required><br><br>
+          <label for="userName">UserName:</label>
+          <input type="text" id="userName" name="username" required>
+          <label for="password">Password:</label>
+          <input type="text" id="password" name="password" required>
           <input type="submit" id="loginButton" value="Login">
         </form>
+        <p class="login-error" id="loginErrorMessage">
+          <!-- this is where login error shows -->
+        </p>
       </article>
+    </section>
+    <section class="hero">
       <p class="user-message" id="userMessage">
         <!-- where our user greeting displays -->
       </p>
@@ -55,7 +63,7 @@
       <article class="booking-cards" id="bookingSection" tabindex="0">
           <!-- display all user bookings cards -->
       </article>
-      <h2 class="all-available-title" id="availableTitle">All Available Bookings</h2>
+      <h2 class="all-available-title hidden" id="availableTitle">All Available Rooms</h2>
       <article class="available-bookings" id="availableToBookSection">
         <!-- display all available rooms -->
       </article>

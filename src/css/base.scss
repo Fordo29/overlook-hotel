@@ -1,6 +1,6 @@
 /* This is an example of how to import a partial scss file*/
-@import '_variables';
 @import '_reset.scss';
+@import '_variables';
 @import '_mixins.scss';
 
 
@@ -15,7 +15,7 @@ html {
 
 body {
 	height: 100vh;
-	// background-color: $goldenTan;
+	background-color: $backgroundColor;
 	line-height: 1.2;
 }
 
@@ -23,18 +23,52 @@ header {
 display: flex;
 justify-content: space-between;
 padding: 20px;
-background-color: #72343480;
+background-color: $backgroundColor;
 align-items: center;
+}
+
+h1 {
+  font-family: $headerFont;
+	font-size: 2em;
+	color: $offWhite;
+}
+
+h2 {
+  font-family: $headerFont;
+  color: $offWhite;
 }
 
 
 .navBtn,
 .bookingBtn {
-  background-color: #364145;
-  color: #ffffff;
+  background-color: $backgroundColor;
+  color: $offWhite;
   border: none;
   padding: 10px 20px;
   border-radius: 5px;
+}
+
+.loginHere {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+	background-image: url('../images/background-image2.png');
+	background-repeat: no-repeat;
+	background-size: cover;
+  width: 100vw;
+  
+}
+
+.login-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: $backgroundColor;
+  color: $offWhite;
+  padding: 40px;
+  margin: 250px;
+  height: 150px;
+  width: 350px;
 }
 
 .navBtn,
@@ -52,6 +86,14 @@ align-items: center;
 	padding: 5% 10%;
 }
 
+.card {
+  border-radius: 0.5em;
+	font-size: 1em;
+  background-color: $cardColor;
+  box-shadow: $boxShadow;
+  padding: 1%;
+}
+
 // body {
 //   background: $primary-background;
 // }
@@ -65,6 +107,7 @@ align-items: center;
 	background-size: cover;
 	// padding: 5% 0 0 0;
 	width: 100vw;
+  height: 300px;
   // height: 80vh;
   // height: 100vh;
 }
@@ -72,16 +115,18 @@ align-items: center;
 .user-message {
   padding: 25px;
   text-align: center;
-  background-color: #723434e8;
+  background-color: $backgroundColor;
+  margin: 30px;
+  color: $offWhite;
 }
 
 .calendar {
   padding: 25px;
   margin: 15px;
-  background-color: #5344448c;
+  background-color: $backgroundColor;
 }
 .roomFilterDropDown {
-  background-color: #5344448c;
+  background-color: $backgroundColor;
   padding: 25px;
 }
 

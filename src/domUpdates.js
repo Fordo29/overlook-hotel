@@ -3,7 +3,6 @@ import {currentUser, updateBookingButtons} from './scripts';
 let bookingCards = document.getElementById('bookingSection');
 let selectDateBtn = document.getElementById('checkInButton');
 let selectDate = document.getElementById('checkInCalendar');
-let allAvailableRooms = document.getElementById('availableBookings');
 let selectFilteredRooms = document.getElementById('rooms');
 let grabRoomTypeBtn = document.getElementById('grabRoomType');
 let errorHandingLine = document.getElementById('errorHandingLine');
@@ -20,6 +19,9 @@ let bookingBtns = [];
 let loginName = document.getElementById('userName');
 let loginPassword = document.getElementById('password');
 let loginButton = document.getElementById('loginButton');
+let loginErrorMessage = document.getElementById('loginErrorMessage');
+let hero = document.querySelector('.hero');
+let loginHere = document.querySelector('.loginHere');
 
 //~~~~~~~~~~~~~~~~~helper functions ~~~~~~~~~~~~~~~
 function show(elements) {
@@ -31,17 +33,17 @@ function hide(elements) {
 }
 
 function showLoginPage() {
-show([loginSection]);
-hide([calendarView, roomFilterDropDown, allBookingsTitle, bookingSection, availableTitle, availableToBookSection, userMessage, clickForRooms]);
+show([loginSection, loginHere]);
+hide([calendarView, roomFilterDropDown, allBookingsTitle, bookingSection, availableTitle, availableToBookSection, userMessage, clickForRooms, hero]);
 }
 
 function showHomepage() {
-show([userMessage, allBookingsTitle, bookingSection, clickForRooms]);
-hide([calendarView, roomFilterDropDown, allBookingsTitle, availableTitle, availableToBookSection, loginSection]);
+show([userMessage, allBookingsTitle, bookingSection, clickForRooms, hero]);
+hide([calendarView, roomFilterDropDown, availableTitle, availableToBookSection, loginSection]);
 }
 
 function showAvailableRooms() {
-show([calendarView, availableTitle, availableToBookSection, bookingSection, userMessage]);
+show([calendarView, availableTitle, availableToBookSection, bookingSection, userMessage, hero]);
 hide([loginSection, allBookingsTitle, bookingSection, clickForRooms]);
 }
 
@@ -129,6 +131,12 @@ function successfulNewBooking () {
 
 }
 
+function loginError() {
+    loginErrorMessage.innerText = 
+    `You have entered an incorrect user name or password.  
+    Please try again.`
+}
+
 
 export {
     welcomeUser,
@@ -139,6 +147,7 @@ export {
     showHomepage,
     showAvailableRooms,
     showLoginPage,
+    loginError,
     loginName,
     loginPassword,
     loginButton,
