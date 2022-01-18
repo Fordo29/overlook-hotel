@@ -6,7 +6,7 @@
 
 * {
 	font-family: $headerFont;
-	color: $offWhite;
+	color: $textColor;
 }
 
 html {
@@ -28,12 +28,12 @@ background-color: $backgroundColor;
 h1 {
   font-family: $headerFont;
 	font-size: 2em;
-	color: $offWhite;
+	color: $textColor;
 }
 
 h2 {
   font-family: $headerFont;
-  color: $offWhite;
+  color: $textColor;
 }
 
 .navBar {
@@ -43,7 +43,7 @@ h2 {
 .navBtn,
 .bookingBtn {
   background-color: $backgroundColor;
-  color: $offWhite;
+  color: $textColor;
   border: none;
   @include button();
 }
@@ -60,7 +60,7 @@ h2 {
 .login-screen {
   @include flexbox(column, nowrap, normal, normal, center);
   background-color: $backgroundColor;
-  color: $offWhite;
+  color: $textColor;
   padding: 40px;
   margin: 250px;
   height: 150px;
@@ -69,7 +69,7 @@ h2 {
 
 .loginButton,
 .logoutButton {
-  background-color: $offWhite;
+  background-color: $textColor;
   color: $backgroundColor;
   &:hover {
       transform: scale(1.1);
@@ -81,14 +81,14 @@ h2 {
 .calenderInput,
 .checkInButton,
 .drop-down-font {
-  color:$backgroundColor;
+  color:$textColor;
    &:hover {
       transform: scale(1.1);
     }
 }
 .goHome {
-  background-color: $offWhite;
-  color: $backgroundColor;
+  background-color: $cardColor;
+  color: $textColor;
   @include button();
   &:hover {
       transform: scale(1.1);
@@ -125,9 +125,9 @@ h2 {
 }
 
 .card {
-  border-radius: 0.5em;
+  border-radius: $borderRadius;
 	font-size: 1em;
-  color: $backgroundColor;
+  color: $cardFontColor;
   background-color: $cardColor;
   box-shadow: $boxShadow;
   padding: 2%;
@@ -139,6 +139,10 @@ h2 {
   line-height: 18px;
 }
 
+.cardFont {
+   color: $cardFontColor;
+}
+
 .bookingBtn {
   align-items: center;
   margin-top: 7px;
@@ -148,34 +152,33 @@ h2 {
     }
 }
 
-
 .user-message {
   text-align: center;
-  color: $offWhite;
+  color: $textColor;
 }
 
 .user-message2 {
-  border-radius: 0.5em;
+  border-radius: $borderRadius;
 	font-size: 1em;
   padding: 25px;
   text-align: center;
   background-color: $backgroundColor;
   margin: 15px;
-  color: $offWhite;
+  color: $textColor;
   box-shadow: $boxShadow;
   padding: 1%;
 }
 
 .calendar {
-  border-radius: 0.5em;
+  border-radius: $borderRadius;
 	font-size: 1em;
   margin: 15px;
   background-color: $backgroundColor;
   padding: 13px;
-  color: $offWhite;
+  color: $textColor;
 }
 .roomFilterDropDown {
-  border-radius: 0.5em;
+  border-radius: $borderRadius;
 	font-size: 1em;
   text-align: center;
   background-color: $backgroundColor;
