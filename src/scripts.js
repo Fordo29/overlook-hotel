@@ -15,6 +15,7 @@ import {
     showHomepage,
     showAvailableRooms,
     showLoginPage,
+    loginError,
     loginName,
     loginPassword,
     loginButton,
@@ -23,9 +24,7 @@ import {
     selectDateBtn,
     selectFilteredRooms,
     grabRoomTypeBtn,
-    errorHandingLine,
-    bookingBtns,
-    bookingCards
+
 } from './domUpdates';
 import './images/background-image2.png';
 
@@ -39,7 +38,7 @@ let roomType;
 
 
 //~~~~~~~~~~~~~~~~~~~ Event Listeners ~~~~~~~~~~~~~~~~~~~~~~~~~~~
-window.addEventListener('load', loadPage);
+window.addEventListener('load', showLoginPage);
 selectDateBtn.addEventListener('click', function(e) {
     selectDates(e, bookingsData, roomsData)
 });
@@ -68,8 +67,8 @@ function logIn(e) {
     console.log('1st grab of name', logNameCheck)
     console.log('1st grab of password', logPasswordCheck)
     let logNameCheck2 = parseInt(logNameCheck.substring(8))
-    // loginName.value = ''
-    // loginPassword.value = ''
+    loginName.value = ''
+    loginPassword.value = ''
     customerLookUp(logNameCheck2, logPasswordCheck);
 
 }
@@ -91,7 +90,7 @@ function customerLookUp(logNameCheck2, logPasswordCheck) {
         })
        
     } else {
-        // error handling
+        loginError();
     } 
     
 }
@@ -101,29 +100,10 @@ function fetchData(logNameCheck2) {
   return response;
 }
 
-
+// this can be used for the manager login
 function fetchAllData() {
   const response = Promise.all([fetchUsersData(), fetchRoomsData(), fetchBookingsData()])
   return response;
-}
-
-function loadPage() {
-  fetchAllData().then(data => {
-    usersData = data[0].customers
-    roomsData = data[1].rooms
-    bookingsData = data[2].bookings
-    // getUser();
-    // showHomepage();
-    // welcomeUser(bookingsData, roomsData);
-    // displayBookings(bookingsData, roomsData);
-    showLoginPage()
-  });
-}
-
-function getUser() {
-  let userIndex = getRandomIndex(usersData);
-  
-
 }
 
 function selectDates(event, bookingsData, roomsData) {
@@ -151,11 +131,9 @@ function bookARoom(e) {
         bookingsData = data.bookings
         displayBookings(bookingsData, roomsData)
         successfulNewBooking()
-        // displayAvailableBookings(checkInDate, bookingsData, roomsData);
     })
     })
    }
-
 }
 
 
