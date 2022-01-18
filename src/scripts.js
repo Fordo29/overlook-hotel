@@ -17,7 +17,6 @@ import {
     showLoginPage,
     loginError,
     clearLoginValues,
-    throwWrongDateErr,
     loginName,
     loginPassword,
     loginButton,
@@ -42,7 +41,7 @@ let roomType;
 
 
 //~~~~~~~~~~~~~~~~~~~ Event Listeners ~~~~~~~~~~~~~~~~~~~~~~~~~~~
-window.addEventListener('load', showLoginPage);
+window.addEventListener('load', checkAccessability);
 selectDateBtn.addEventListener('click', function(e) {
     selectDates(e, bookingsData, roomsData)
 });
@@ -82,15 +81,15 @@ function logIn(e) {
     e.preventDefault();
     let logNameCheck = loginName.value
     let logPasswordCheck = loginPassword.value
-    let loginID = parseInt(logNameCheck.substring(8))
+    let logNameCheck2 = parseInt(logNameCheck.substring(8))
     clearLoginValues()
-    customerLookUp(loginID, logPasswordCheck, logNameCheck);
+    customerLookUp(logNameCheck2, logPasswordCheck, logNameCheck);
 
 }
 
-function customerLookUp(loginID, logPasswordCheck, logNameCheck) {
-    if(loginID > 0 && loginID <= 50 && logNameCheck.startsWith('customer') && logPasswordCheck === 'overlook2021') {
-        fetchData(loginID).then(data => {
+function customerLookUp(logNameCheck2, logPasswordCheck, logNameCheck) {
+    if(logNameCheck2 > 0 && logNameCheck2 <= 50 && logNameCheck.startsWith('customer') && logPasswordCheck === 'overlook2021') {
+        fetchData(logNameCheck2).then(data => {
             usersData = data[0]
             roomsData = data[1].rooms
             bookingsData = data[2].bookings
@@ -105,17 +104,22 @@ function customerLookUp(loginID, logPasswordCheck, logNameCheck) {
     } 
     
 }
+function checkAccessability() {
+    fetchData(29).then(data => {
+            usersData = data[0]
+            roomsData = data[1].rooms
+            bookingsData = data[2].bookings
+            currentUser = new User(usersData);
+            showHomepage();
+            welcomeUser(bookingsData, roomsData);
+            displayBookings(bookingsData, roomsData);
+     })
+}
 
 function selectDates(event, bookingsData, roomsData) {
     event.preventDefault()
     checkInDate = selectDate.value.split("-").join("/")
-    const today = new Date();
-    if (checkInDate > today){
-        displayAvailableBookings(checkInDate, bookingsData, roomsData);  
-    } else {
-        throwWrongDateErr();
-    }
-
+    displayAvailableBookings(checkInDate, bookingsData, roomsData);
 }
 
 function filteredRooms() {
