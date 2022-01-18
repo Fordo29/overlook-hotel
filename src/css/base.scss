@@ -45,8 +45,7 @@ h2 {
   background-color: $backgroundColor;
   color: $offWhite;
   border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
+  @include button();
 }
 
 .loginHere {
@@ -68,15 +67,13 @@ h2 {
   width: 400px;
 }
 
-.navBtn,
-.bookingBtn:hover {
-  opacity: 1
-}
-
 .loginButton,
 .logoutButton {
   background-color: $offWhite;
   color: $backgroundColor;
+  &:hover {
+      transform: scale(1.1);
+    }
 }
 
 .userName,
@@ -85,25 +82,30 @@ h2 {
 .checkInButton,
 .drop-down-font {
   color:$backgroundColor;
+   &:hover {
+      transform: scale(1.1);
+    }
 }
 .goHome {
   background-color: $offWhite;
   color: $backgroundColor;
-  padding: 10px 20px;
-  border-radius: 5px;
+  @include button();
+  &:hover {
+      transform: scale(1.1);
+    }
 }
 
 .showAllBookings{
-  display:flex;
-  flex-direction: column;
-  align-items: center;
+  @include flexbox(column, nowrap, normal, normal, center)
 }
+
 .all-bookings,
 .all-available-title {
   text-align: center;
   margin-top: 18px;
   font-size: 22px;
 }
+
 .booking-cards, 
 .available-bookings {
   @include flexbox(row, wrap, center, space-around, normal);
@@ -112,33 +114,40 @@ h2 {
 	padding: 5% 10%;
 }
 
+.hero {
+  @include flexbox(column, nowrap, normal, normal, center);
+  background-image: url('../images/background-image2.png');
+  background-color: rgba(242,242,242,.25);
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100vw;
+  height: 400px; 
+}
+
 .card {
   border-radius: 0.5em;
 	font-size: 1em;
   color: $backgroundColor;
   background-color: $cardColor;
   box-shadow: $boxShadow;
-  padding: 1%;
+  padding: 2%;
   flex-direction: column;
   align-items: flex-start;
   align-content: space-around;
   justify-content: space-evenly;
-  width: 221px;
+  width: 240px;
+  line-height: 18px;
 }
 
 .bookingBtn {
   align-items: center;
+  margin-top: 7px;
+  margin-left: 67px;
+    &:hover {
+      transform: scale(1.1);
+    }
 }
 
-.hero {
-  @include flexbox(column, nowrap, normal, normal, normal);
-  align-items: center;
-	background-image: url('../images/background-image2.png');
-	background-repeat: no-repeat;
-	background-size: cover;
-	width: 100vw;
-  height: 400px;
-}
 
 .user-message {
   text-align: center;
