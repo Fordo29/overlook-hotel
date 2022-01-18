@@ -25,6 +25,8 @@ import {
     selectDateBtn,
     selectFilteredRooms,
     grabRoomTypeBtn,
+    logOutBtn, 
+    goHomeBtn
 
 } from './domUpdates';
 import './images/background-image2.png';
@@ -51,14 +53,28 @@ loginButton.addEventListener('click', (e) => {
     logIn(e)
 })
 
-
-
 function updateBookingButtons(bookingBtns) {
   bookingBtns.forEach((button) => {
     button.addEventListener('click', function(e) {
       bookARoom(e);
     });
   });
+}
+
+logOutBtn.addEventListener('click', logout);
+goHomeBtn.addEventListener('click', showHomepage);
+
+
+//~~~~~~~~~~~~~~~~~~ functions ~~~~~~~~~~~~~~~~~~~
+function fetchData(logNameCheck2) {
+  const response = Promise.all([fetchSingleUser(logNameCheck2), fetchRoomsData(), fetchBookingsData()])
+  return response;
+}
+
+// this can be used for the manager login
+function fetchAllData() {
+  const response = Promise.all([fetchUsersData(), fetchRoomsData(), fetchBookingsData()])
+  return response;
 }
 
 function logIn(e) {
@@ -89,17 +105,6 @@ function customerLookUp(logNameCheck2, logPasswordCheck, logNameCheck) {
     
 }
 
-function fetchData(logNameCheck2) {
-  const response = Promise.all([fetchSingleUser(logNameCheck2), fetchRoomsData(), fetchBookingsData()])
-  return response;
-}
-
-// this can be used for the manager login
-function fetchAllData() {
-  const response = Promise.all([fetchUsersData(), fetchRoomsData(), fetchBookingsData()])
-  return response;
-}
-
 function selectDates(event, bookingsData, roomsData) {
     event.preventDefault()
     checkInDate = selectDate.value.split("-").join("/")
@@ -128,7 +133,6 @@ function bookARoom(e) {
    }
 }
 
-
 function errorHanding1(response) {
     if(response.status === 422) {
         throw new Error(`Could not process your booking.`)
@@ -137,6 +141,9 @@ function errorHanding1(response) {
     }
 }
 
+function logout() {
+    showLoginPage()
+}
 
 // ~~~~~~~~~~~~~~~~ helper functions ~~~~~~~~~~~~~~~~~~~~
 function getRandomIndex(array) {
