@@ -100,7 +100,7 @@ function displayAvailableBookings(date, bookingData, roomData) {
     })
     } else {
         return availableToBookSection.innerHTML = 
-        `We fiercely apologize!  All rooms are booked for the date selected.  Please make another selection`
+        `We fiercely apologize!  We would love to have you, however all rooms are booked for the date selected.  Please select another date.`
     }
     show([availableTitle, roomFilterDropDown])
     bookingBtns = document.querySelectorAll('.bookingBtn');
@@ -123,7 +123,7 @@ function displayFilterRooms(roomType) {
         })
     } else {
         return availableToBookSection.innerHTML = 
-        `We fiercely apologize!  The room type you selected are booked.  Please make another selection`
+        `We fiercely apologize!  The room type you selected is completely booked.  Please make another room selection.`
     }
     bookingBtns = document.querySelectorAll('.bookingBtn');
     updateBookingButtons(bookingBtns);
@@ -134,6 +134,11 @@ function successfulNewBooking () {
     hide([availableTitle])
     availableToBookSection.innerHTML = `<p>Thank you for booking with us!  We are excited to see you soon!</p>`
     show([goHomeBtn])
+}
+
+function throwWrongDateErr () {
+    availableToBookSection.innerHTML = 
+        `We fiercely apologize!  The date you have selected is unavailable.  Please select another date.`
 }
 
 function clearLoginValues() {
@@ -159,6 +164,7 @@ export {
     showLoginPage,
     loginError,
     clearLoginValues, 
+    throwWrongDateErr,
     loginName,
     loginPassword,
     loginButton,

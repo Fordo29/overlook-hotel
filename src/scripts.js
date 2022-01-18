@@ -17,6 +17,7 @@ import {
     showLoginPage,
     loginError,
     clearLoginValues,
+    throwWrongDateErr,
     loginName,
     loginPassword,
     loginButton,
@@ -81,15 +82,15 @@ function logIn(e) {
     e.preventDefault();
     let logNameCheck = loginName.value
     let logPasswordCheck = loginPassword.value
-    let logNameCheck2 = parseInt(logNameCheck.substring(8))
+    let loginID = parseInt(logNameCheck.substring(8))
     clearLoginValues()
-    customerLookUp(logNameCheck2, logPasswordCheck, logNameCheck);
+    customerLookUp(loginID, logPasswordCheck, logNameCheck);
 
 }
 
-function customerLookUp(logNameCheck2, logPasswordCheck, logNameCheck) {
-    if(logNameCheck2 > 0 && logNameCheck2 <= 50 && logNameCheck.startsWith('customer') && logPasswordCheck === 'overlook2021') {
-        fetchData(logNameCheck2).then(data => {
+function customerLookUp(loginID, logPasswordCheck, logNameCheck) {
+    if(loginID > 0 && loginID <= 50 && logNameCheck.startsWith('customer') && logPasswordCheck === 'overlook2021') {
+        fetchData(loginID).then(data => {
             usersData = data[0]
             roomsData = data[1].rooms
             bookingsData = data[2].bookings
@@ -108,7 +109,13 @@ function customerLookUp(logNameCheck2, logPasswordCheck, logNameCheck) {
 function selectDates(event, bookingsData, roomsData) {
     event.preventDefault()
     checkInDate = selectDate.value.split("-").join("/")
-    displayAvailableBookings(checkInDate, bookingsData, roomsData);
+    const today = new Date();
+    if (checkInDate > today){
+        displayAvailableBookings(checkInDate, bookingsData, roomsData);  
+    } else {
+        throwWrongDateErr();
+    }
+
 }
 
 function filteredRooms() {
