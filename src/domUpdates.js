@@ -75,10 +75,10 @@ function displayBookings(bookingsArr, roomData) {
         })
         return bookingCards.innerHTML +=
         `<article class="card" tabindex="0">
-        <h3>Date Booked: ${booking.date}</h3>
-        <h3>Room Type: ${foundRoom.roomType}</h3>
-        <h3>Cost Per Night: $${foundRoom.costPerNight}</h3>
-        <h3>Booking Confirmation: ${booking.id}</h3>
+        <h3 class="cardFont">Date Booked: ${booking.date}</h3>
+        <h3 class="cardFont">Room Type: ${foundRoom.roomType}</h3>
+        <h3 class="cardFont">Cost Per Night: $${foundRoom.costPerNight}</h3>
+        <h3 class="cardFont">Booking Confirmation: ${booking.id}</h3>
         </article>`
     });
 
@@ -91,10 +91,10 @@ function displayAvailableBookings(date, bookingData, roomData) {
     currentUser.availableRooms.forEach(room => {
         return availableToBookSection.innerHTML += 
         `<article class="card" id="${room.number}" tabindex="0">
-            <h3>Room Type: ${room.roomType}</h3>
-            <h3>Bed Size: ${room.bedSize}</h3>
-            <h3>Number of Beds: ${room.numBeds}</h3>
-            <h3>Cost per Night: $${room.costPerNight}</h3>
+            <h3 class="cardFont">Room Type: ${room.roomType}</h3>
+            <h3 class="cardFont">Bed Size: ${room.bedSize}</h3>
+            <h3 class="cardFont">Number of Beds: ${room.numBeds}</h3>
+            <h3 class="cardFont">Cost per Night: $${room.costPerNight}</h3>
             <button class='bookingBtn'>Book it!</button>
         </article>`
     })

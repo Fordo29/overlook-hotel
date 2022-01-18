@@ -11,3 +11,8 @@
     padding: 10px 20px;
     border-radius: 5px;
 }
+
+@mixin widthHeight($height, $width) {
+    height: $height;
+    width: $height;
+}
