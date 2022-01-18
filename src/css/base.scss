@@ -5,8 +5,8 @@
 
 
 * {
-	// font-family: $bodyFont;
-	// color: $offWhite;
+	font-family: $headerFont;
+	color: $offWhite;
 }
 
 html {
@@ -20,11 +20,9 @@ body {
 }
 
 header {
-display: flex;
-justify-content: space-between;
+@include flexbox(row, nowrap, normal, space-between, center);
 padding: 20px;
 background-color: $backgroundColor;
-align-items: center;
 }
 
 h1 {
@@ -38,20 +36,20 @@ h2 {
   color: $offWhite;
 }
 
+.navBar {
+  display: flex;
+}
 
 .navBtn,
 .bookingBtn {
   background-color: $backgroundColor;
   color: $offWhite;
   border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
+  @include button();
 }
 
 .loginHere {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  @include flexbox(column, nowrap, normal, normal, center);
 	background-image: url('../images/background-image2.png');
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -60,84 +58,139 @@ h2 {
 }
 
 .login-screen {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  @include flexbox(column, nowrap, normal, normal, center);
   background-color: $backgroundColor;
   color: $offWhite;
   padding: 40px;
   margin: 250px;
   height: 150px;
-  width: 350px;
+  width: 400px;
 }
 
-.navBtn,
-.bookingBtn:hover {
-  opacity: 1
+.loginButton,
+.logoutButton {
+  background-color: $offWhite;
+  color: $backgroundColor;
+  &:hover {
+      transform: scale(1.1);
+    }
+}
+
+.userName,
+.password, 
+.calenderInput,
+.checkInButton,
+.drop-down-font {
+  color:$backgroundColor;
+   &:hover {
+      transform: scale(1.1);
+    }
+}
+.goHome {
+  background-color: $offWhite;
+  color: $backgroundColor;
+  @include button();
+  &:hover {
+      transform: scale(1.1);
+    }
+}
+
+.showAllBookings{
+  @include flexbox(column, nowrap, normal, normal, center)
+}
+
+.all-bookings,
+.all-available-title {
+  text-align: center;
+  margin-top: 18px;
+  font-size: 22px;
 }
 
 .booking-cards, 
 .available-bookings {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
+  @include flexbox(row, wrap, center, space-around, normal);
   gap: 2em;
   grid-template-columns: 25% 25% 25% 25%;
 	padding: 5% 10%;
 }
 
+.hero {
+  @include flexbox(column, nowrap, normal, normal, center);
+  background-image: url('../images/background-image2.png');
+  background-color: rgba(242,242,242,.25);
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100vw;
+  height: 400px; 
+}
+
 .card {
   border-radius: 0.5em;
 	font-size: 1em;
+  color: $backgroundColor;
   background-color: $cardColor;
+  box-shadow: $boxShadow;
+  padding: 2%;
+  flex-direction: column;
+  align-items: flex-start;
+  align-content: space-around;
+  justify-content: space-evenly;
+  width: 240px;
+  line-height: 18px;
+}
+
+.bookingBtn {
+  align-items: center;
+  margin-top: 7px;
+  margin-left: 67px;
+    &:hover {
+      transform: scale(1.1);
+    }
+}
+
+
+.user-message {
+  text-align: center;
+  color: $offWhite;
+}
+
+.user-message2 {
+  border-radius: 0.5em;
+	font-size: 1em;
+  padding: 25px;
+  text-align: center;
+  background-color: $backgroundColor;
+  margin: 15px;
+  color: $offWhite;
   box-shadow: $boxShadow;
   padding: 1%;
 }
 
-// body {
-//   background: $primary-background;
-// }
-
-.hero {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-	background-image: url('../images/background-image2.png');
-	background-repeat: no-repeat;
-	background-size: cover;
-	// padding: 5% 0 0 0;
-	width: 100vw;
-  height: 300px;
-  // height: 80vh;
-  // height: 100vh;
-}
-
-.user-message {
-  padding: 25px;
-  text-align: center;
-  background-color: $backgroundColor;
-  margin: 30px;
-  color: $offWhite;
-}
-
 .calendar {
-  padding: 25px;
+  border-radius: 0.5em;
+	font-size: 1em;
   margin: 15px;
   background-color: $backgroundColor;
+  padding: 13px;
+  color: $offWhite;
 }
 .roomFilterDropDown {
+  border-radius: 0.5em;
+	font-size: 1em;
+  text-align: center;
   background-color: $backgroundColor;
   padding: 25px;
+  margin: 15px;
 }
 
 label {
-    display: block;
-    font: 1rem 'Fira Sans', sans-serif;
+  display: block;
+  font: 1rem 'Oxygen', sans-serif;
 }
 
 input,
 label {
-    margin: .4rem 0;
+  margin: .4rem 0;
 }
 
 .hidden {

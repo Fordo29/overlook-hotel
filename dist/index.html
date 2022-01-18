@@ -13,7 +13,10 @@
   <header class="header">
     <a href="/"><h1>Mandella Beach Resort</h1></a>
    <section class='navBar'>
-    <button class='navBtn hidden' id="logOutBtn">Log Out</button>
+     <p class="user-message" id="userMessage">
+       <!-- where our user greeting displays -->
+     </p>
+    <button class='navBtn hidden' id="goodByeButton">Log Out</button>
     
 
    </section>
@@ -22,11 +25,11 @@
     <section class="loginHere">
       <article class="login-screen" id="loginSection">
         <form>
-          <label for="userName">UserName:</label>
-          <input type="text" id="userName" name="username" required>
+          <label for="userName">Login:</label>
+          <input type="text" id="userName" class="userName" name="username" required>
           <label for="password">Password:</label>
-          <input type="text" id="password" name="password" required>
-          <input type="submit" id="loginButton" value="Login">
+          <input type="text" id="password" class="password" name="password" required>
+          <input class="loginButton" type="submit" id="loginButton" value="Login">
         </form>
         <p class="login-error" id="loginErrorMessage">
           <!-- this is where login error shows -->
@@ -34,7 +37,7 @@
       </article>
     </section>
     <section class="hero">
-      <p class="user-message" id="userMessage">
+      <p class="user-message2" id="userMessage2">
         <!-- where our user greeting displays -->
       </p>
       <button class='navBtn' id="clickForRooms" >Book A Room</button>
@@ -42,23 +45,23 @@
       <article class="calendar" id="calendarView">
         <form>
           <label for="checkInCalendar">Pick a check in date:</label>
-          <input type="date" id="checkInCalendar" name="checkin" value="2022-01-15" min="2022-01-19" max="2022-12-31" required>
-          <input type="submit" id="checkInButton" value="Check In!">
+          <input type="date" class="calenderInput" id="checkInCalendar"  name="checkin" value="2022-01-15" min="2022-01-19" max="2022-12-31" required>
+          <input type="submit" id="checkInButton" class="checkInButton" value="Check In!">
         </form>
       </article>
       <article class="roomFilterDropDown" id="roomFilterDropDown">
         <label for="rooms">Filter Rooms By Room Type:</label>
         
-        <select name="rooms" id="rooms">
+        <select name="rooms" id="rooms" class="drop-down-font">
           <option value="junior suite">Junior Suite</option>
           <option value="residential suite">Residential Suite</option>
           <option value="suite">Suite</option>
           <option value="single room">Single Room</option>
         </select>
-        <button id="grabRoomType">Click to Select Room Type</button>
+        <button id="grabRoomType" class="drop-down-font">Click to Select Room Type</button>
       </article>
     </section>
-    <section>
+    <section class="showAllBookings">
       <h2 class="all-bookings" id="allBookingsTitle">Your bookings</h2>
       <article class="booking-cards" id="bookingSection" tabindex="0">
           <!-- display all user bookings cards -->
@@ -67,11 +70,9 @@
       <article class="available-bookings" id="availableToBookSection">
         <!-- display all available rooms -->
       </article>
+      <button class="goHome" id="goHome">Click to go to the Home Screen</button>
     </section>    
   </main>
-  
-  <!-- Do not include the scripts.js or class files here - it is done by the webpack server -->
   <script src="bundle.js"></script>
-
 </body>
 </html>
