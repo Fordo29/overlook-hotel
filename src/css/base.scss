@@ -5,8 +5,8 @@
 
 
 * {
-	// font-family: $bodyFont;
-	// color: $offWhite;
+	font-family: $headerFont;
+	color: $offWhite;
 }
 
 html {
@@ -20,11 +20,9 @@ body {
 }
 
 header {
-display: flex;
-justify-content: space-between;
+@include flexbox(row, nowrap, normal, space-between, center);
 padding: 20px;
 background-color: $backgroundColor;
-align-items: center;
 }
 
 h1 {
@@ -38,6 +36,9 @@ h2 {
   color: $offWhite;
 }
 
+.navBar {
+  display: flex;
+}
 
 .navBtn,
 .bookingBtn {
@@ -49,9 +50,7 @@ h2 {
 }
 
 .loginHere {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  @include flexbox(column, nowrap, normal, normal, center);
 	background-image: url('../images/background-image2.png');
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -60,9 +59,7 @@ h2 {
 }
 
 .login-screen {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  @include flexbox(column, nowrap, normal, normal, center);
   background-color: $backgroundColor;
   color: $offWhite;
   padding: 40px;
@@ -76,15 +73,40 @@ h2 {
   opacity: 1
 }
 
-.all-bookings {
+.loginButton,
+.logoutButton {
+  background-color: $offWhite;
+  color: $backgroundColor;
+}
+
+.userName,
+.password, 
+.calenderInput,
+.checkInButton,
+.drop-down-font {
+  color:$backgroundColor;
+}
+.goHome {
+  background-color: $offWhite;
+  color: $backgroundColor;
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+
+.showAllBookings{
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+}
+.all-bookings,
+.all-available-title {
   text-align: center;
   margin-top: 18px;
+  font-size: 22px;
 }
 .booking-cards, 
 .available-bookings {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
+  @include flexbox(row, wrap, center, space-around, normal);
   gap: 2em;
   grid-template-columns: 25% 25% 25% 25%;
 	padding: 5% 10%;
@@ -93,51 +115,73 @@ h2 {
 .card {
   border-radius: 0.5em;
 	font-size: 1em;
+  color: $backgroundColor;
   background-color: $cardColor;
   box-shadow: $boxShadow;
   padding: 1%;
+  flex-direction: column;
+  align-items: flex-start;
+  align-content: space-around;
+  justify-content: space-evenly;
+  width: 221px;
+}
+
+.bookingBtn {
+  align-items: center;
 }
 
 .hero {
-  display: flex;
-  flex-direction: column;
+  @include flexbox(column, nowrap, normal, normal, normal);
   align-items: center;
 	background-image: url('../images/background-image2.png');
 	background-repeat: no-repeat;
 	background-size: cover;
 	width: 100vw;
-  height: 350px;
+  height: 400px;
 }
 
 .user-message {
-  padding: 25px;
   text-align: center;
-  background-color: $backgroundColor;
-  margin: 30px;
   color: $offWhite;
 }
 
+.user-message2 {
+  border-radius: 0.5em;
+	font-size: 1em;
+  padding: 25px;
+  text-align: center;
+  background-color: $backgroundColor;
+  margin: 15px;
+  color: $offWhite;
+  box-shadow: $boxShadow;
+  padding: 1%;
+}
+
 .calendar {
+  border-radius: 0.5em;
+	font-size: 1em;
   margin: 15px;
   background-color: $backgroundColor;
   padding: 13px;
   color: $offWhite;
 }
 .roomFilterDropDown {
+  border-radius: 0.5em;
+	font-size: 1em;
+  text-align: center;
   background-color: $backgroundColor;
   padding: 25px;
+  margin: 15px;
 }
 
-
-
 label {
-    display: block;
-    font: 1rem 'Fira Sans', sans-serif;
+  display: block;
+  font: 1rem 'Oxygen', sans-serif;
 }
 
 input,
 label {
-    margin: .4rem 0;
+  margin: .4rem 0;
 }
 
 .hidden {
