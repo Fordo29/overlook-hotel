@@ -7,6 +7,7 @@ let selectFilteredRooms = document.getElementById('rooms');
 let grabRoomTypeBtn = document.getElementById('grabRoomType');
 let errorHandingLine = document.getElementById('errorHandingLine');
 let userMessage = document.getElementById('userMessage');
+let userMessage2 = document.getElementById('userMessage2');
 let allBookingsTitle = document.getElementById('allBookingsTitle');
 let bookingSection = document.getElementById('bookingSection');
 let availableTitle = document.getElementById('availableTitle');
@@ -22,6 +23,8 @@ let loginButton = document.getElementById('loginButton');
 let loginErrorMessage = document.getElementById('loginErrorMessage');
 let hero = document.querySelector('.hero');
 let loginHere = document.querySelector('.loginHere');
+let logOutBtn = document.getElementById('goodByeButton');
+let goHomeBtn = document.getElementById('goHome')
 
 //~~~~~~~~~~~~~~~~~helper functions ~~~~~~~~~~~~~~~
 function show(elements) {
@@ -34,17 +37,17 @@ function hide(elements) {
 
 function showLoginPage() {
 show([loginSection, loginHere]);
-hide([calendarView, roomFilterDropDown, allBookingsTitle, bookingSection, availableTitle, availableToBookSection, userMessage, clickForRooms, hero]);
+hide([calendarView, roomFilterDropDown, allBookingsTitle, bookingSection, availableTitle, availableToBookSection, userMessage, clickForRooms, hero, logOutBtn, goHomeBtn]);
 }
 
 function showHomepage() {
-show([userMessage, allBookingsTitle, bookingSection, clickForRooms, hero]);
-hide([calendarView, roomFilterDropDown, availableTitle, availableToBookSection, loginSection]);
+show([userMessage, allBookingsTitle, bookingSection, clickForRooms, hero, logOutBtn]);
+hide([calendarView, roomFilterDropDown, availableTitle, availableToBookSection, loginSection, goHomeBtn]);
 }
 
 function showAvailableRooms() {
-show([calendarView, availableTitle, availableToBookSection, bookingSection, userMessage, hero]);
-hide([loginSection, allBookingsTitle, bookingSection, clickForRooms]);
+show([calendarView, availableToBookSection, bookingSection, userMessage, hero, logOutBtn]);
+hide([loginSection, allBookingsTitle, bookingSection, clickForRooms, goHomeBtn]);
 }
 
 
@@ -53,11 +56,13 @@ hide([loginSection, allBookingsTitle, bookingSection, clickForRooms]);
 
 //~~~~~~~~~~~~~~~~~ HOME PAGE FUNCTIONS ~~~~~~~~~~~~~~~~/
 function welcomeUser(bookingData, roomData) {
-  userMessage.innerHTML =
-    `<h2>Welcome to paradise ${currentUser.name}!
-      <br>Adventure Awaits You!</h2>
-      <h3>Total Amount Spent: 
-      <br>$${currentUser.totalSpentByUser(bookingData, roomData)}</h3>`;
+    userMessage.innerHTML =
+    `<h2>Welcome to Paradise <br>${currentUser.name}!</h2>`
+    userMessage2.innerHTML =
+    `<h2>Adventure Awaits You!</h2>
+    <h3>Total Amount Spent: 
+    <br>$${currentUser.totalSpentByUser(bookingData, roomData)}</h3>`;
+    
 }
 
 function displayBookings(bookingsArr, roomData) {
@@ -97,7 +102,7 @@ function displayAvailableBookings(date, bookingData, roomData) {
         return availableToBookSection.innerHTML = 
         `We fiercely apologize!  All rooms are booked for the date selected.  Please make another selection`
     }
-    show([roomFilterDropDown])
+    show([availableTitle, roomFilterDropDown])
     bookingBtns = document.querySelectorAll('.bookingBtn');
     updateBookingButtons(bookingBtns);
 }
@@ -126,8 +131,9 @@ function displayFilterRooms(roomType) {
 
 function successfulNewBooking () {
     availableToBookSection.innerHTML = ``;
+    hide([availableTitle])
     availableToBookSection.innerHTML = `<p>Thank you for booking with us!  We are excited to see you soon!</p>`
-
+    show([goHomeBtn])
 }
 
 function clearLoginValues() {
@@ -163,5 +169,7 @@ export {
     grabRoomTypeBtn,
     bookingBtns,
     errorHandingLine,
-    bookingCards
+    bookingCards, 
+    logOutBtn, 
+    goHomeBtn
 }
