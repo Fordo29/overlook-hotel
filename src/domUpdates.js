@@ -82,7 +82,6 @@ function displayBookings(bookingsArr, roomData) {
 function displayAvailableBookings(date, bookingData, roomData) {
     availableToBookSection.innerHTML = ``;
     currentUser.checkForAvailableRooms(date, bookingData, roomData);
-    console.log(currentUser.availableRooms)
     if(currentUser.availableRooms.length > 0) {
     currentUser.availableRooms.forEach(room => {
         return availableToBookSection.innerHTML += 
@@ -131,6 +130,11 @@ function successfulNewBooking () {
 
 }
 
+function clearLoginValues() {
+    loginName.value = ''
+    loginPassword.value = ''  
+}
+
 function loginError() {
     loginErrorMessage.innerText = 
     `You have entered an incorrect user name or password.  
@@ -148,6 +152,7 @@ export {
     showAvailableRooms,
     showLoginPage,
     loginError,
+    clearLoginValues, 
     loginName,
     loginPassword,
     loginButton,

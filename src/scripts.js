@@ -16,11 +16,12 @@ import {
     showAvailableRooms,
     showLoginPage,
     loginError,
+    clearLoginValues,
     loginName,
     loginPassword,
     loginButton,
     clickForRooms,
-    selectDate,
+    selectDate, 
     selectDateBtn,
     selectFilteredRooms,
     grabRoomTypeBtn,
@@ -64,26 +65,19 @@ function logIn(e) {
     e.preventDefault();
     let logNameCheck = loginName.value
     let logPasswordCheck = loginPassword.value
-    console.log('1st grab of name', logNameCheck)
-    console.log('1st grab of password', logPasswordCheck)
     let logNameCheck2 = parseInt(logNameCheck.substring(8))
-    loginName.value = ''
-    loginPassword.value = ''
-    customerLookUp(logNameCheck2, logPasswordCheck);
+    clearLoginValues()
+    customerLookUp(logNameCheck2, logPasswordCheck, logNameCheck);
 
 }
 
-function customerLookUp(logNameCheck2, logPasswordCheck) {
-    if(logNameCheck2 > 0 && logNameCheck2 <= 50 && logPasswordCheck === 'overlook2021') {
+function customerLookUp(logNameCheck2, logPasswordCheck, logNameCheck) {
+    if(logNameCheck2 > 0 && logNameCheck2 <= 50 && logNameCheck.startsWith('customer') && logPasswordCheck === 'overlook2021') {
         fetchData(logNameCheck2).then(data => {
-            console.log(data)
             usersData = data[0]
             roomsData = data[1].rooms
             bookingsData = data[2].bookings
-
-            console.log(usersData)
             currentUser = new User(usersData);
-            console.log('after single fetch', currentUser)
             showHomepage();
             welcomeUser(bookingsData, roomsData);
             displayBookings(bookingsData, roomsData);
@@ -114,8 +108,6 @@ function selectDates(event, bookingsData, roomsData) {
 
 function filteredRooms() {
     roomType = selectFilteredRooms.value
-    console.log(roomType)
-    console.log(currentUser.availableRooms)
     displayFilterRooms(roomType)
 }
 
