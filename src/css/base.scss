@@ -68,7 +68,7 @@ h2 {
   padding: 40px;
   margin: 250px;
   height: 150px;
-  width: 350px;
+  width: 400px;
 }
 
 .navBtn,
@@ -76,6 +76,10 @@ h2 {
   opacity: 1
 }
 
+.all-bookings {
+  text-align: center;
+  margin-top: 18px;
+}
 .booking-cards, 
 .available-bookings {
   display: flex;
@@ -94,10 +98,6 @@ h2 {
   padding: 1%;
 }
 
-// body {
-//   background: $primary-background;
-// }
-
 .hero {
   display: flex;
   flex-direction: column;
@@ -105,11 +105,8 @@ h2 {
 	background-image: url('../images/background-image2.png');
 	background-repeat: no-repeat;
 	background-size: cover;
-	// padding: 5% 0 0 0;
 	width: 100vw;
-  height: 300px;
-  // height: 80vh;
-  // height: 100vh;
+  height: 350px;
 }
 
 .user-message {
@@ -121,14 +118,17 @@ h2 {
 }
 
 .calendar {
-  padding: 25px;
   margin: 15px;
   background-color: $backgroundColor;
+  padding: 13px;
+  color: $offWhite;
 }
 .roomFilterDropDown {
   background-color: $backgroundColor;
   padding: 25px;
 }
+
+
 
 label {
     display: block;
