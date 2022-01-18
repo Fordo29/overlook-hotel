@@ -7,4 +7,7 @@
   align-items: $alignItems;
 }
 
-// @include flexbox(row, nowrap, normal, normal, normal);
+@mixin button() {
+    padding: 10px 20px;
+    border-radius: 5px;
+}
