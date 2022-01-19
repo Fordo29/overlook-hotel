@@ -55,22 +55,29 @@ To log into the customer side, a user can log in using the following credentials
 
 >username: customer50 (choose a number 01-50 to access different customers)
 >
->password: overlook2021
+>password: overlook2021  
 
+![LoginScreen_SparkVideo](https://user-images.githubusercontent.com/90149529/150047472-136fcd05-c561-4206-b057-d8862a8809ba.gif)
 
 
 Upon Loggin in, the customer should see a dashboard/home page that shows:
-- Any room bookings they have made (past or present/upcoming) and the total amount they have spent on rooms.
+- Any room bookings they have made (past or present/upcoming) and the total amount they have spent on rooms.  
 
+![homepageOverlookHotel_AdobeCreativeCloudExpress](https://user-images.githubusercontent.com/90149529/150047869-98bc1faa-0d75-4a0f-8032-717e26e3936a.gif)
 
 
 They should be able to select a date for which they would like to book a room.  Upon selecting a date: 
 - the customer should be shown a list of room details for only rooms that are available on that date.
-- Then they can filter down those available rooms by room type. 
+- Then they can filter down those available rooms by room type.   
+![bookAndFilter_AdobeCreativeCloudExpress](https://user-images.githubusercontent.com/90149529/150048200-948823af-0262-4991-b249-921ba32d7295.gif)
 
 
+Finally a customer should be able to select a room for booking. 
 
-Finally a customer should be able to select a room for booking. In the event that no rooms are available for the date/roomType selected, display a message fiercely apologizing to the user and asking them to adjust their room search.
+![BookARoom_AdobeCreativeCloudExpress](https://user-images.githubusercontent.com/90149529/150048730-075c9f1f-b27d-4228-8c8a-152b3b68e907.gif)
+
+In the event that no rooms are available for the date/roomType selected, display a message fiercely apologizing to the user and asking them to adjust their room search.  
+![noroomstobook_AdobeCreativeCloudExpress](https://user-images.githubusercontent.com/90149529/150048941-44694a00-7cd3-483b-a232-4b905c083bda.gif)
 
 
 ## Future Goals
