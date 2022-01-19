@@ -107,8 +107,6 @@ function customerLookUp(logNameCheck2, logPasswordCheck, logNameCheck) {
     
 }
 
-
-
 function selectDates(event, bookingsData, roomsData) {
     event.preventDefault()
     checkInDate = selectDate.value.split("-").join("/")
@@ -159,8 +157,6 @@ function logout() {
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
-
-
 
 export {currentUser, updateBookingButtons,  errorHanding1};
 

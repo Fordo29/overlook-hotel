@@ -4,8 +4,6 @@
 @import '_mixins.scss';
 @import '_keyframes.scss';
 
-
-
 * {
 	font-family: $headerFont;
 	color: $textColor;
@@ -71,7 +69,6 @@ h2 {
   width: 400px;
 }
 
-
 .logoutButton {
   background-color: $textColor;
   color: $backgroundColor;
@@ -96,7 +93,6 @@ h2 {
   @include button();
 }
 
-
 .userName,
 .password, 
 .calenderInput,
@@ -106,14 +102,6 @@ h2 {
   &:hover {
     transform: scale(1.1);
   }
-}
-.goHome {
-  background-color: $cardColor;
-  color: $textColor;
-  @include button();
-  &:hover {
-      transform: scale(1.1);
-    }
 }
 
 .showAllBookings{
@@ -161,16 +149,16 @@ h2 {
 }
 
 .cardFont {
-   color: $cardFontColor;
+  color: $cardFontColor;
 }
 
 .bookingBtn {
   align-items: center;
   margin-top: 7px;
   margin-left: 67px;
-    &:hover {
-      transform: scale(1.1);
-    }
+  &:hover {
+    transform: scale(1.1);
+  }
 }
 
 .user-message {
@@ -198,6 +186,7 @@ h2 {
   padding: 13px;
   color: $textColor;
 }
+
 .roomFilterDropDown {
   border-radius: $borderRadius;
 	font-size: 1em;
@@ -205,6 +194,22 @@ h2 {
   background-color: $backgroundColor;
   padding: 25px;
   margin: 15px;
+}
+
+.goHomeContainer {
+  display: flex;
+  justify-content: space-around;
+  
+}
+
+.goHome {
+  background-color: $cardColor;
+  color: $textColor;
+  margin-bottom: 15px;
+  @include button();
+  &:hover {
+      transform: scale(1.1);
+    }
 }
 
 label {
