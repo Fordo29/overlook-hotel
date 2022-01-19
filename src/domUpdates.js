@@ -1,5 +1,6 @@
 import {currentUser, updateBookingButtons} from './scripts';
 
+
 let bookingCards = document.getElementById('bookingSection');
 let selectDateBtn = document.getElementById('checkInButton');
 let selectDate = document.getElementById('checkInCalendar');
@@ -16,7 +17,6 @@ let loginSection = document.getElementById('loginSection');
 let calendarView = document.getElementById('calendarView');
 let roomFilterDropDown = document.getElementById('roomFilterDropDown');
 let clickForRooms = document.getElementById('clickForRooms');
-let bookingBtns = [];
 let loginName = document.getElementById('userName');
 let loginPassword = document.getElementById('password');
 let loginButton = document.getElementById('loginButton');
@@ -25,6 +25,7 @@ let hero = document.querySelector('.hero');
 let loginHere = document.querySelector('.loginHere');
 let logOutBtn = document.getElementById('goodByeButton');
 let goHomeBtn = document.getElementById('goHome')
+let bookingBtns = [];
 
 //~~~~~~~~~~~~~~~~~helper functions ~~~~~~~~~~~~~~~
 function show(elements) {
@@ -85,7 +86,7 @@ function displayBookings(bookingsArr, roomData) {
 }
 
 function displayAvailableBookings(date, bookingData, roomData) {
-    loginErrorMessage.innerText = ``;
+    loginErrorMessage.innerHTML = ``;
     availableToBookSection.innerHTML = ``;
     currentUser.checkForAvailableRooms(date, bookingData, roomData);
     if(currentUser.availableRooms.length > 0) {
@@ -142,12 +143,7 @@ function throwWrongDateErr () {
         `We fiercely apologize!  The date you have selected is unavailable.  Please select another date.`
 }
 
-// function updateTodaysDate() {
-//     let calDate = (new Date().toISOString(0,10));
-//     console.log(calDate)
-//     let dateHtml = selectDate.;
-//     dateHtml.innerHTML = `${calDate}`;
-// }
+
 
 function clearLoginValues() {
     loginName.value = ''
