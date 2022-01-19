@@ -28,7 +28,7 @@ class User {
           });
         return acc;
       }, 0);
-    return Math.round(totalAmount * 100) / 100;
+    return (Math.round(totalAmount * 100) / 100).toFixed(2);
   }
 
   checkForAvailableRooms(date, bookingData, roomData) {

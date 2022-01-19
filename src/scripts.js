@@ -17,7 +17,6 @@ import {
     showLoginPage,
     loginError,
     throwWrongDateErr,
-    updateTodaysDate,
     clearLoginValues,
     loginName,
     loginPassword,
@@ -29,7 +28,6 @@ import {
     grabRoomTypeBtn,
     logOutBtn,
     goHomeBtn
-
 } from './domUpdates';
 import './images/background-image2.png';
 
@@ -62,7 +60,7 @@ function updateBookingButtons(bookingBtns) {
 }
 
 logOutBtn.addEventListener('click', logout);
-goHomeBtn.addEventListener('click', showHomepage);
+goHomeBtn.addEventListener('click', refreshClientInfo);
 
 //~~~~~~~~~~~~~~~~~~ functions ~~~~~~~~~~~~~~~~~~~
 function fetchData(logNameCheck2) {
@@ -127,14 +125,21 @@ function bookARoom(e) {
       date: checkInDate,
       roomNumber: parseInt(e.target.parentNode.id),
     };
-    postBooking(postThisBooking).then(data => {
-      fetchBookingsData().then(data => {
-        bookingsData = data.bookings;
-        displayBookings(bookingsData, roomsData);
-        successfulNewBooking();
-      });
-    });
+    postBooking(postThisBooking)
+    successfulNewBooking();
   }
+}
+
+function refreshClientInfo() {
+   fetchData(currentUser.id).then(data => {
+      usersData = data[0]
+      roomsData = data[1].rooms
+      bookingsData = data[2].bookings
+      currentUser = new User(usersData)
+      showHomepage();
+      welcomeUser(bookingsData, roomsData);
+      displayBookings(bookingsData, roomsData);
+   })
 }
 
 function errorHanding1(response) {
@@ -149,9 +154,5 @@ function logout() {
   showLoginPage();
 }
 
-// ~~~~~~~~~~~~~~~~ helper functions ~~~~~~~~~~~~~~~~~~~~
-function getRandomIndex(array) {
-  return Math.floor(Math.random() * array.length);
-}
 
 export {currentUser, updateBookingButtons,  errorHanding1};
