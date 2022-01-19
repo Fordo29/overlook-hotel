@@ -16,6 +16,7 @@ import {
     showAvailableRooms,
     showLoginPage,
     loginError,
+    throwWrongDateErr,
     updateTodaysDate,
     clearLoginValues,
     loginName,
@@ -44,7 +45,7 @@ let roomType;
 //~~~~~~~~~~~~~~~~~~~ Event Listeners ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 window.addEventListener('load', showLoginPage);
 selectDateBtn.addEventListener('click', function(e) {
-    selectDates(e, bookingsData, roomsData)
+    captureDates(e, bookingsData, roomsData)
 });
 
 grabRoomTypeBtn.addEventListener('click', filteredRooms);
@@ -107,17 +108,18 @@ function customerLookUp(logNameCheck2, logPasswordCheck, logNameCheck) {
     
 }
 
-
-
-function selectDates(event, bookingsData, roomsData) {
+function captureDates(event, bookingsData, roomsData) {
     event.preventDefault()
-    checkInDate = selectDate.value.split("-").join("/")
-   const today = new Date().toISOString().slice(0, 10);
-   console.log(today)
-    if (checkInDate > today){
+    const editedDate = new Date(selectDate.value + "T00:00:00.000-07:00")
+    const today = new Date()
+    today.setHours(0, 0, 0, 0)
+
+    if (editedDate > today){
+        checkInDate = selectDate.value.split("-").join("/")
         displayAvailableBookings(checkInDate, bookingsData, roomsData);  
     } else {
         throwWrongDateErr();
+        
     }
 }   
 
@@ -159,8 +161,6 @@ function logout() {
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
-
-
 
 export {currentUser, updateBookingButtons,  errorHanding1};
 
