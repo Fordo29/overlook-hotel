@@ -2,6 +2,8 @@
 @import '_reset.scss';
 @import '_variables';
 @import '_mixins.scss';
+@import '_keyframes.scss';
+
 
 
 * {
@@ -40,12 +42,14 @@ h2 {
   display: flex;
 }
 
-.navBtn,
-.bookingBtn {
-  background-color: $backgroundColor;
-  color: $textColor;
-  border: none;
-  @include button();
+.tilt-in-fwd-tr {
+	-webkit-animation: tilt-in-fwd-tr 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	animation: tilt-in-fwd-tr 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+.slide-in-right {
+	-webkit-animation: slide-in-right 2s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	animation: slide-in-right 2s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 }
 
 .loginHere {
@@ -67,14 +71,31 @@ h2 {
   width: 400px;
 }
 
-.loginButton,
+
 .logoutButton {
   background-color: $textColor;
   color: $backgroundColor;
   &:hover {
-      transform: scale(1.1);
-    }
+    transform: scale(1.1);
+  }
 }
+
+.loginButton {
+  background-color: $cardColor;
+  color: $textColor;
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+.navBtn,
+.bookingBtn {
+  background-color: $backgroundColor;
+  color: $textColor;
+  border: none;
+  @include button();
+}
+
 
 .userName,
 .password, 
@@ -82,9 +103,9 @@ h2 {
 .checkInButton,
 .drop-down-font {
   color:$textColor;
-   &:hover {
-      transform: scale(1.1);
-    }
+  &:hover {
+    transform: scale(1.1);
+  }
 }
 .goHome {
   background-color: $cardColor;
