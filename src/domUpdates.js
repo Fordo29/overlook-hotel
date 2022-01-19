@@ -85,6 +85,7 @@ function displayBookings(bookingsArr, roomData) {
 }
 
 function displayAvailableBookings(date, bookingData, roomData) {
+    loginErrorMessage.innerText = ``;
     availableToBookSection.innerHTML = ``;
     currentUser.checkForAvailableRooms(date, bookingData, roomData);
     if(currentUser.availableRooms.length > 0) {
@@ -140,6 +141,13 @@ function throwWrongDateErr () {
     availableToBookSection.innerHTML = 
         `We fiercely apologize!  The date you have selected is unavailable.  Please select another date.`
 }
+
+// function updateTodaysDate() {
+//     let calDate = (new Date().toISOString(0,10));
+//     console.log(calDate)
+//     let dateHtml = selectDate.;
+//     dateHtml.innerHTML = `${calDate}`;
+// }
 
 function clearLoginValues() {
     loginName.value = ''

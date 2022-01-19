@@ -11,7 +11,7 @@
 </head>
 <body>
   <header class="header">
-    <a href="/"><h1>Mandella Beach Resort</h1></a>
+    <h1 class="slide-in-right">Mandella Beach Resort</h1>
    <section class='navBar'>
      <p class="user-message" id="userMessage">
        <!-- where our user greeting displays -->
@@ -23,12 +23,12 @@
   </header>
   <main>
     <section class="loginHere">
-      <article class="login-screen" id="loginSection">
+      <article class="login-screen tilt-in-fwd-tr" id="loginSection">
         <form>
           <label for="userName">Login:</label>
           <input type="text" id="userName" class="userName" name="username" required>
           <label for="password">Password:</label>
-          <input type="text" id="password" class="password" name="password" required>
+          <input type="password" id="password" class="password" name="password" required>
           <input class="loginButton" type="submit" id="loginButton" value="Login">
         </form>
         <p class="login-error" id="loginErrorMessage">
@@ -45,8 +45,8 @@
       <article class="calendar" id="calendarView">
         <form>
           <label for="checkInCalendar">Pick a check in date:</label>
-          <input type="date" class="calenderInput" id="checkInCalendar"  name="checkin" value="2022-01-15" min="2022-01-17" max="2022-12-31" required>
-          <input type="submit" id="checkInButton" class="checkInButton" value="Check In!">
+          <input type="date" class="calenderInput" id="checkInCalendar"  name="checkin" value="2022-01-19" min="2022-01-18" max="2022-12-31" required>
+          <input type="submit" id="checkInButton" class="checkInButton" value="Check Room">
         </form>
       </article>
       <article class="roomFilterDropDown" id="roomFilterDropDown">

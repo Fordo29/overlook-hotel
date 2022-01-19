@@ -16,6 +16,7 @@ import {
     showAvailableRooms,
     showLoginPage,
     loginError,
+    updateTodaysDate,
     clearLoginValues,
     loginName,
     loginPassword,
@@ -41,7 +42,7 @@ let roomType;
 
 
 //~~~~~~~~~~~~~~~~~~~ Event Listeners ~~~~~~~~~~~~~~~~~~~~~~~~~~~
-window.addEventListener('load', checkAccessability);
+window.addEventListener('load', showLoginPage);
 selectDateBtn.addEventListener('click', function(e) {
     selectDates(e, bookingsData, roomsData)
 });
@@ -97,6 +98,7 @@ function customerLookUp(logNameCheck2, logPasswordCheck, logNameCheck) {
             showHomepage();
             welcomeUser(bookingsData, roomsData);
             displayBookings(bookingsData, roomsData);
+            
         })
        
     } else {
@@ -104,23 +106,20 @@ function customerLookUp(logNameCheck2, logPasswordCheck, logNameCheck) {
     } 
     
 }
-function checkAccessability() {
-    fetchData(29).then(data => {
-            usersData = data[0]
-            roomsData = data[1].rooms
-            bookingsData = data[2].bookings
-            currentUser = new User(usersData);
-            showHomepage();
-            welcomeUser(bookingsData, roomsData);
-            displayBookings(bookingsData, roomsData);
-     })
-}
+
+
 
 function selectDates(event, bookingsData, roomsData) {
     event.preventDefault()
     checkInDate = selectDate.value.split("-").join("/")
-    displayAvailableBookings(checkInDate, bookingsData, roomsData);
-}
+   const today = new Date().toISOString().slice(0, 10);
+   console.log(today)
+    if (checkInDate > today){
+        displayAvailableBookings(checkInDate, bookingsData, roomsData);  
+    } else {
+        throwWrongDateErr();
+    }
+}   
 
 function filteredRooms() {
     roomType = selectFilteredRooms.value
