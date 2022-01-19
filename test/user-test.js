@@ -42,7 +42,7 @@ describe('User Class Testing', function() {
 
     it('should return the total amount user has spent', function() {
 
-    expect(user4.totalSpentByUser(bookings, rooms)).to.equal(849.54);
+    expect(user4.totalSpentByUser(bookings, rooms)).to.equal('849.54');
     });
 
     it('should show rooms available for booking', function() {
@@ -55,9 +55,5 @@ describe('User Class Testing', function() {
         user1.checkForAvailableRooms("2022/01/24", bookings, rooms)
         user1.filterByRoomType('residential suite')
     expect(user1.filteredRooms.length).to.equal(2);
-    });
-    
-    it.skip('should return true', function() {
-    expect(true).to.equal(true);
     });
 });
