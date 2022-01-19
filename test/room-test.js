@@ -43,7 +43,4 @@ describe('Room Class Testing', function() {
     expect(room1.costPerNight).to.equal(358.4);
     });
 
-    it.skip('should return true', function() {
-    expect(true).to.equal(true);
-    });
 });
