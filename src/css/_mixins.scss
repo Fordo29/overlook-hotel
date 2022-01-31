@@ -12,7 +12,7 @@
     border-radius: 5px;
 }
 
-@mixin widthHeight($height, $width) {
+@mixin heightWidth($height, $width) {
     height: $height;
-    width: $height;
+    width: $width;
 }  

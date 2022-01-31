@@ -1,29 +1,38 @@
 import {currentUser, updateBookingButtons} from './scripts';
 
-let bookingCards = document.getElementById('bookingSection');
-let selectDateBtn = document.getElementById('checkInButton');
+//views and titles
+const userMessage = document.getElementById('userMessage');
+const userMessage2 = document.getElementById('userMessage2');
+const allBookingsTitle = document.getElementById('allBookingsTitle');
+const bookingSection = document.getElementById('bookingSection');
+const availableTitle = document.getElementById('availableTitle');
+const availableToBookSection = document.getElementById('availableToBookSection');
+const loginSection = document.getElementById('loginSection');
+const calendarView = document.getElementById('calendarView');
+const hero = document.querySelector('.hero');
+const loginHere = document.querySelector('.loginHere');
+
+//cards
+const bookingCards = document.getElementById('bookingSection');
+const selectFilteredRooms = document.getElementById('rooms');
+
+//error messaging
+const errorHandingLine = document.getElementById('errorHandingLine');
+const loginErrorMessage = document.getElementById('loginErrorMessage');
+
+//inputs
+const loginName = document.getElementById('userName');
+const loginPassword = document.getElementById('password');
+const roomFilterDropDown = document.getElementById('roomFilterDropDown');
 let selectDate = document.getElementById('checkInCalendar');
-let selectFilteredRooms = document.getElementById('rooms');
-let grabRoomTypeBtn = document.getElementById('grabRoomType');
-let errorHandingLine = document.getElementById('errorHandingLine');
-let userMessage = document.getElementById('userMessage');
-let userMessage2 = document.getElementById('userMessage2');
-let allBookingsTitle = document.getElementById('allBookingsTitle');
-let bookingSection = document.getElementById('bookingSection');
-let availableTitle = document.getElementById('availableTitle');
-let availableToBookSection = document.getElementById('availableToBookSection');
-let loginSection = document.getElementById('loginSection');
-let calendarView = document.getElementById('calendarView');
-let roomFilterDropDown = document.getElementById('roomFilterDropDown');
-let clickForRooms = document.getElementById('clickForRooms');
-let loginName = document.getElementById('userName');
-let loginPassword = document.getElementById('password');
-let loginButton = document.getElementById('loginButton');
-let loginErrorMessage = document.getElementById('loginErrorMessage');
-let hero = document.querySelector('.hero');
-let loginHere = document.querySelector('.loginHere');
-let logOutBtn = document.getElementById('goodByeButton');
-let goHomeBtn = document.getElementById('goHome');
+
+//button query selectors
+const clickForRooms = document.getElementById('clickForRooms');
+const loginButton = document.getElementById('loginButton');
+const logOutBtn = document.getElementById('goodByeButton');
+const goHomeBtn = document.getElementById('goHome');
+const selectDateBtn = document.getElementById('checkInButton');
+const grabRoomTypeBtn = document.getElementById('grabRoomType');
 let bookingBtns = [];
 
 //~~~~~~~~~~~~~~~~~helper functions ~~~~~~~~~~~~~~~
@@ -61,9 +70,8 @@ function welcomeUser(bookingData, roomData) {
 
 }
 
-function displayBookings(bookingsArr, roomData) {
+function displayBookings(roomData) {
   bookingCards.innerHTML = ``;
-  currentUser.getUsersBookings(bookingsArr)
   let sortedBookings = currentUser.bookings.sort((a, b) => new Date(a.date) - new Date(b.date))
   sortedBookings.forEach(booking => {
       const foundRoom = roomData.find(room => {
