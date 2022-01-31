@@ -93,7 +93,7 @@ function customerLookUp(logNameCheck2, logPasswordCheck, logNameCheck) {
       currentUser = new User(usersData)
       showHomepage();
       welcomeUser(bookingsData, roomsData);
-      displayBookings(bookingsData, roomsData);
+      displayBookings(roomsData);
     });
   } else {
     loginError();
@@ -138,7 +138,7 @@ function refreshClientInfo() {
       currentUser = new User(usersData)
       showHomepage();
       welcomeUser(bookingsData, roomsData);
-      displayBookings(bookingsData, roomsData);
+      displayBookings(roomsData);
    })
 }
 

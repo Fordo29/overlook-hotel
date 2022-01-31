@@ -1,4 +1,3 @@
-/* This is an example of how to import a partial scss file*/
 @import '_reset.scss';
 @import '_variables';
 @import '_mixins.scss';
@@ -65,8 +64,7 @@ h2 {
   color: $textColor;
   padding: 40px;
   margin: 250px;
-  height: 150px;
-  width: 400px;
+  @include heightWidth(150px, 400px);
 }
 
 .logoutButton {
@@ -131,6 +129,7 @@ h2 {
   background-size: cover;
   width: 100vw;
   height: 400px; 
+  @include heightWidth(400px, 100vw);
 }
 
 .card {
@@ -140,10 +139,7 @@ h2 {
   background-color: $cardColor;
   box-shadow: $boxShadow;
   padding: 2%;
-  flex-direction: column;
-  align-items: flex-start;
-  align-content: space-around;
-  justify-content: space-evenly;
+  @include flexbox(column, nowrap, normal, space-evenly, space-around);
   width: 240px;
   line-height: 18px;
 }
@@ -155,7 +151,8 @@ h2 {
 .bookingBtn {
   align-items: center;
   margin-top: 7px;
-  margin-left: 67px;
+  margin-left: 40px;
+  margin-right: 40px;
   &:hover {
     transform: scale(1.1);
   }
